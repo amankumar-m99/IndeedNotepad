@@ -168,6 +168,10 @@ public class MainPageController implements Initializable{
 	public FindReplaceDialog getFindReplaceDialog() {
 		return findReplaceDialog;
 	}
+
+	public void setFindReplaceDialog(FindReplaceDialog findReplaceDialog) {
+		this.findReplaceDialog = findReplaceDialog;
+	}
 	
 	public void setFileContent(String fileContent) {
 		Notepad notepad = new Notepad(this, fileContent, true);

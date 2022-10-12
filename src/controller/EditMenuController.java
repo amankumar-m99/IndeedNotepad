@@ -81,9 +81,10 @@ public class EditMenuController {
 	}
 	
 	private void setFindReplaceDialog(FindReplaceType type) {
+		if(mainPageController.getFindReplaceDialog() == null) {
+			mainPageController.setFindReplaceDialog(new FindReplaceDialog(mainPageController.getAppMain().mainStage));
+		}
 		FindReplaceDialog findReplaceDialog = mainPageController.getFindReplaceDialog();
-		if(findReplaceDialog == null)
-			findReplaceDialog = new FindReplaceDialog(mainPageController.getAppMain().mainStage);
 		if(notepad.getSelectedText() != null)
 			findReplaceDialog.setFindText(notepad.getSelectedText());
 		findReplaceDialog.show(type);
