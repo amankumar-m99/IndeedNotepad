@@ -11,6 +11,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import main.AppMain;
@@ -67,7 +68,11 @@ public class MainPageController implements Initializable{
 	@FXML
 	public MenuItem italicMenuItem;
 	@FXML
-	public MenuItem underlineMenuItem;
+	public MenuItem underlineMenuItem;	
+	@FXML
+	public CheckMenuItem lineNumbersMenuItem;
+	@FXML
+	public CheckMenuItem statusMenuItem;
 	@FXML
 	public MenuItem iconPackMenuItem;
 	@FXML
@@ -115,6 +120,12 @@ public class MainPageController implements Initializable{
 	private void editMenuClicked(Event event) {
 		EditMenuController editMenuController = new EditMenuController(this);
 		editMenuController.handleEvent(event);
+	}
+	
+	@FXML
+	private void viewMenuClicked(Event event) {
+		ViewMenuController viewMenuController = new ViewMenuController(this);
+		viewMenuController.handleEvent(event);
 	}
 
 	@FXML

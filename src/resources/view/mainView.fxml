@@ -222,11 +222,11 @@
 						<MenuItem mnemonicParsing="false" text="Font" />
 					</items>
 				</Menu>
-				<Menu mnemonicParsing="false" text="View">
+				<Menu onAction="#viewMenuClicked" mnemonicParsing="false" text="View">
 					<items>
-						<CheckMenuItem mnemonicParsing="false"
+						<CheckMenuItem fx:id="lineNumbersMenuItem" mnemonicParsing="false"
 							text="Show Line numbers" />
-						<CheckMenuItem mnemonicParsing="false" text="Status" />
+						<CheckMenuItem fx:id="statusMenuItem" mnemonicParsing="false" text="Status" selected="true" />
 					</items>
 				</Menu>
 				<Menu onAction="#preferenceMenuClicked" mnemonicParsing="false" text="Preference">

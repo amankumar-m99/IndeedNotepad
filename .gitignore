@@ -1,3 +1,19 @@
+#Eclipse project files
+.project
+.classpath
+target
+bin
+.truechip
+.settings
+build.fxbuild
+
+#DB Files
+
+#Log Files
+
+#backup Files
+*.bak
+
 # Compiled class file
 *.class
 
@@ -8,7 +24,6 @@
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
-.mtj.tmp/
 
 # Package Files #
 *.jar
