@@ -79,7 +79,7 @@ public class IconPackDialog extends Dialog<ButtonType>{
 		radioButton.setGraphicTextGap(20);
 		radioButton.setUserData(iconPackType);
 		radioButton.setContentDisplay(ContentDisplay.RIGHT);
-		if(Configuration.getIconpack().equals(iconPackType))
+		if(Configuration.getIconpackType().equals(iconPackType))
 			radioButton.setSelected(true);
 		return radioButton;
 	}
@@ -94,8 +94,8 @@ public class IconPackDialog extends Dialog<ButtonType>{
 	public void showIconPackDialog() {
 		Optional<ButtonType> dialogResponse = showAndWait();
 		if(dialogResponse.isPresent() && dialogResponse.get().equals(ButtonType.APPLY)) {
-			Configuration.setIconpack((IconpackType)iconPackToggleGroup.getSelectedToggle().getUserData());
-			AppMain.iconPackProperty.setValue(Configuration.getIconpack().toString());
+			Configuration.setIconpackType((IconpackType)iconPackToggleGroup.getSelectedToggle().getUserData());
+			AppMain.iconPackProperty.setValue(Configuration.getIconpackType().toString());
 		}
 	}
 

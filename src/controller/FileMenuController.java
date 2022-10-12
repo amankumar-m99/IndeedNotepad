@@ -85,7 +85,7 @@ public class FileMenuController {
 	private void closeNotepad() {
 		if(!canProceedNewNotepad())
 			return;
-		mainPageController.root.setCenter(mainPageController.getHomeScreen());
+		mainPageController.root.setCenter(mainPageController.getHomePage().getHomeScreen());
 		mainPageController.root.setBottom(null);
 		this.notepad = null;
 		mainPageController.updateStageTitle(NotepadSavedStatus.CLOSED);

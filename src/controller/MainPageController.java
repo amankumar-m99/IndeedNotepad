@@ -84,7 +84,7 @@ public class MainPageController implements Initializable{
 	
 	private AppMain appMain;
 	private Notepad notepad;
-	private Node homeScreen;
+	private HomePage homePage;
 	private Property<Boolean> disableMenuItems;
 	private FindReplaceDialog findReplaceDialog;
 
@@ -96,7 +96,7 @@ public class MainPageController implements Initializable{
 	
 	private void setIconPack(){
 		Iconpack iconpack = new Iconpack(this);
-		iconpack.setIconpack(Configuration.getIconpack());
+		iconpack.setUpdateIconpack();
 	}
 
 	@Override
@@ -104,10 +104,9 @@ public class MainPageController implements Initializable{
 		disableMenuItems = new SimpleBooleanProperty(true);
 		Menubar.setAcceleratorsToMenuItems(this);
 		Menubar.bindMenuItemsDisabledProperty(this,disableMenuItems);
-		HomePage hp = new HomePage(this);
+		homePage = new HomePage(this);
 		setIconPack();
-		homeScreen = hp.getContent();
-		root.setCenter(homeScreen);
+		root.setCenter(homePage.getHomeScreen());
 	}
 	
 	@FXML
@@ -157,8 +156,8 @@ public class MainPageController implements Initializable{
 		return notepad;
 	}
 	
-	public Node getHomeScreen() {
-		return homeScreen;
+	public HomePage getHomePage() {
+		return homePage;
 	}
 	
 	public Property<Boolean> getDisableMenuItems() {

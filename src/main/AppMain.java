@@ -17,7 +17,7 @@ public class AppMain extends Application{
 	public static final Image FAVICON = new Image("/resources/images/appicon.png");
 	public static int untitledFileCounter = 0;
 	public static String appName= "Indeed NotePad";
-	public static Property<String> iconPackProperty = new SimpleStringProperty(Configuration.getIconpack().toString());
+	public static Property<String> iconPackProperty = new SimpleStringProperty(Configuration.getIconpackType().toString());
 	
 	public Stage mainStage;
 	public Property<String> stageTitleProperty;
