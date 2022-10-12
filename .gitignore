@@ -3,7 +3,6 @@
 .classpath
 target
 bin
-.truechip
 .settings
 build.fxbuild
 
