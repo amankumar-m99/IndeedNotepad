@@ -3,14 +3,12 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import configuration.Configuration;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
@@ -64,11 +62,9 @@ public class MainPageController implements Initializable{
 	@FXML
 	public MenuItem deleteAllMenuItem;
 	@FXML
-	public MenuItem boldMenuItem;
+	public CheckMenuItem wordWrapMenuItem;
 	@FXML
-	public MenuItem italicMenuItem;
-	@FXML
-	public MenuItem underlineMenuItem;	
+	public MenuItem fontsMenuItem;
 	@FXML
 	public CheckMenuItem lineNumbersMenuItem;
 	@FXML
@@ -121,6 +117,12 @@ public class MainPageController implements Initializable{
 		editMenuController.handleEvent(event);
 	}
 	
+	@FXML
+	private void formatMenuClicked(Event event) {
+		FormatMenuController formatMenuController = new FormatMenuController(this);
+		formatMenuController.handleEvent(event);
+	}
+
 	@FXML
 	private void viewMenuClicked(Event event) {
 		ViewMenuController viewMenuController = new ViewMenuController(this);

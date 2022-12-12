@@ -2,7 +2,7 @@ package controller;
 
 import java.util.Optional;
 
-import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
@@ -11,11 +11,12 @@ import model.SaveDialog;
 import model.notepad.Notepad;
 import model.notepad.NotepadCreater;
 import model.notepad.NotepadOpener;
+import model.notepad.NotepadPrinter;
 import model.notepad.NotepadSaver;
 import notepadutils.FileChooserDialogType;
 import notepadutils.NotepadSavedStatus;
 
-public class FileMenuController {
+public class FileMenuController implements MenuController{
 	private MainPageController mainPageController;
 	private Notepad notepad;
 
@@ -24,7 +25,8 @@ public class FileMenuController {
 		this.notepad = mainPageController.getNotepad();
 	}
 	
-	public void handleEvent(ActionEvent event) {
+	@Override
+	public void handleEvent(Event event) {
 		MenuItem menuItem = (MenuItem) event.getTarget();
 		String id = menuItem.getId();
 		switch (id) {
@@ -77,6 +79,7 @@ public class FileMenuController {
 	}
 	
 	private void printNotepad() {
+		NotepadPrinter.print(mainPageController);
 	}
 	
 	private void exportNotepad() {
@@ -87,7 +90,7 @@ public class FileMenuController {
 			return;
 		mainPageController.root.setCenter(mainPageController.getHomePage().getHomeScreen());
 		mainPageController.root.setBottom(null);
-		this.notepad = null;
+		mainPageController.setNotepad(null);
 		mainPageController.updateStageTitle(NotepadSavedStatus.CLOSED);
 		mainPageController.getDisableMenuItems().setValue(true);
 	}
@@ -126,7 +129,7 @@ public class FileMenuController {
 	}
 	
 	private Optional<ButtonType> askSaveNotepad() {
-		SaveDialog saveDialog = new SaveDialog(notepad.getFileName());
+		SaveDialog saveDialog = new SaveDialog(notepad.getFileName(), mainPageController.getAppMain().mainStage);
 		return saveDialog.showAndWait();
 	}
 	

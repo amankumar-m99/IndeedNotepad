@@ -211,22 +211,17 @@
 						<MenuItem fx:id="deleteAllMenuItem" mnemonicParsing="false" text="Delete All" />
 					</items>
 				</Menu>
-				<Menu mnemonicParsing="false" text="Format">
+				<Menu onAction="#formatMenuClicked" mnemonicParsing="false" text="Format">
 					<items>
-						<MenuItem fx:id="boldMenuItem" mnemonicParsing="false"
-							text="Bold" />
-						<MenuItem fx:id="italicMenuItem" mnemonicParsing="false"
-							text="Italic" />
-						<MenuItem fx:id="underlineMenuItem"
-							mnemonicParsing="false" text="Underline" />
-						<MenuItem mnemonicParsing="false" text="Font" />
+						<CheckMenuItem fx:id="wordWrapMenuItem" mnemonicParsing="false" text="Word wrap" selected="true" />
+						<MenuItem fx:id="fontsMenuItem" mnemonicParsing="false" text="Fonts"/>
 					</items>
 				</Menu>
 				<Menu onAction="#viewMenuClicked" mnemonicParsing="false" text="View">
 					<items>
-						<CheckMenuItem fx:id="lineNumbersMenuItem" mnemonicParsing="false"
+						<CheckMenuItem fx:id="lineNumbersMenuItem" mnemonicParsing="false" visible="false"
 							text="Show Line numbers" />
-						<CheckMenuItem fx:id="statusMenuItem" mnemonicParsing="false" text="Status" selected="true" />
+						<CheckMenuItem fx:id="statusMenuItem" mnemonicParsing="false" text="Show Status Bar" selected="true" />
 					</items>
 				</Menu>
 				<Menu onAction="#preferenceMenuClicked" mnemonicParsing="false" text="Preference">
@@ -240,7 +235,7 @@
 								</ImageView>
 							</graphic>
 						</MenuItem>
-						<MenuItem fx:id="clearAppDataMenuItem" mnemonicParsing="false" text="Clear app data">
+						<MenuItem fx:id="clearAppDataMenuItem" mnemonicParsing="false" text="Clear Preferences">
 						<graphic>
 								<ImageView fitHeight="22" preserveRatio="true">
 									<image>

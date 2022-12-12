@@ -96,6 +96,9 @@ public class FindReplaceDialog extends Dialog<ButtonType>{
 	private GridPane getFindGrid() {
 		GridPane gridPane = new GridPane();
 		gridPane.addRow(0, new Label("Find :"),findTextField);
+		gridPane.addRow(1, new Label("Replace :"),new TextField());
+		gridPane.getChildren().get(2).setVisible(false);
+		gridPane.getChildren().get(3).setVisible(false);
 		return gridPane;
 	}
 
@@ -142,12 +145,12 @@ public class FindReplaceDialog extends Dialog<ButtonType>{
 	private Node buttonPallete(FindReplaceType type) {
 		HBox expane = new HBox();
 		HBox.setHgrow(expane, Priority.ALWAYS);
-		HBox hbox = new HBox(5,expane);
+		HBox hbox = new HBox(15);
 		switch (type) {
 		case FIND: hbox.getChildren().add(new Button("Find")); break;
 		case REPLACE: hbox.getChildren().addAll(new Button("Replace"),new Button("Replace All")); break;
 		}
-		return hbox;
+		return new HBox(expane,hbox);
 	}
 	
 	public void setFindText(String findText) {

@@ -26,9 +26,6 @@ public class Menubar {
 		mainPageController.replaceMenuItem.setAccelerator(new KeyCharacterCombination("R",KeyCombination.CONTROL_DOWN));
 		mainPageController.selectAllMenuItem.setAccelerator(new KeyCharacterCombination("A",KeyCombination.CONTROL_DOWN));
 		
-		mainPageController.boldMenuItem.setAccelerator(new KeyCharacterCombination("B",KeyCombination.CONTROL_DOWN));
-		mainPageController.italicMenuItem.setAccelerator(new KeyCharacterCombination("I",KeyCombination.CONTROL_DOWN));
-		mainPageController.underlineMenuItem.setAccelerator(new KeyCharacterCombination("U",KeyCombination.CONTROL_DOWN));
 		mainPageController.shortcutMenuItem.setAccelerator(new KeyCharacterCombination("S",KeyCombination.CONTROL_DOWN,KeyCombination.ALT_DOWN));
 	}
 	
@@ -48,5 +45,9 @@ public class Menubar {
 		mainPageController.replaceMenuItem.disableProperty().bind(disableMenuItems);
 		mainPageController.selectAllMenuItem.disableProperty().bind(disableMenuItems);
 		mainPageController.deleteAllMenuItem.disableProperty().bind(disableMenuItems);
+		mainPageController.wordWrapMenuItem.disableProperty().bind(disableMenuItems);
+		mainPageController.fontsMenuItem.disableProperty().bind(disableMenuItems);
+		mainPageController.lineNumbersMenuItem.disableProperty().bind(disableMenuItems);
+		mainPageController.statusMenuItem.disableProperty().bind(disableMenuItems);
 	}
 }

@@ -4,14 +4,12 @@ import configuration.Configuration;
 import controller.MainPageController;
 import javafx.application.Application;
 import javafx.beans.property.Property;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import model.iconpack.IconpackType;
 
 public class AppMain extends Application{
 	public static final Image FAVICON = new Image("/resources/images/appicon.png");

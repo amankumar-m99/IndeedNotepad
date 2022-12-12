@@ -6,7 +6,7 @@ import model.FindReplaceDialog;
 import model.FindReplaceDialog.FindReplaceType;
 import model.notepad.Notepad;
 
-public class EditMenuController {
+public class EditMenuController implements MenuController {
 	private MainPageController mainPageController;
 	private Notepad notepad;
 
@@ -15,6 +15,7 @@ public class EditMenuController {
 		this.notepad = mainPageController.getNotepad();
 	}
 	
+	@Override
 	public void handleEvent(Event event) {
 		MenuItem menuItem = (MenuItem) event.getTarget();
 		String id = menuItem.getId();
