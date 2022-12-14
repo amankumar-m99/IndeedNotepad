@@ -41,6 +41,7 @@ public class FontDialog extends Dialog<ButtonType>{
 	private boolean isFontValid;
 	private ObservableList<String> fontFamilyList;
 	private Font appliedFont;
+	private int choosenFontSize=0;
 
  	private static enum FontSizeChange{
 		INCREMENT, DECREMENT;
@@ -166,6 +167,7 @@ public class FontDialog extends Dialog<ButtonType>{
 		int i = list.indexOf(FontConverter.getFontSizeFromFontString(configFontString));
 		fontSizeComboBox.getSelectionModel().select(i);
 		HBox hbox = new HBox(0,minusBtn,fontSizeComboBox,plusBtn);
+//		choosenFontSize = Integer.parseInt(fontSizeComboBox.getSelectionModel().getSelectedItem());
 		fontSizeComboBox.setOnAction(e->validateFont());
 		return hbox;
 	}
@@ -177,7 +179,7 @@ public class FontDialog extends Dialog<ButtonType>{
 			fontSize = Integer.parseInt(currentFontSize);
 		}
 		catch (Exception e) {
-			return;
+			fontSize = choosenFontSize;
 		}
 		switch (changer) {
 		case INCREMENT: fontSize++; break;
@@ -209,7 +211,6 @@ public class FontDialog extends Dialog<ButtonType>{
 
 	public Optional<Font> getChoosenFont() {
 		Optional<ButtonType> result = showAndWait();
-		System.out.println("");
 		if(!result.isPresent() || result.get().equals(ButtonType.CANCEL)) {
 			return Optional.ofNullable(null);
 		}

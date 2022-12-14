@@ -1,5 +1,6 @@
 package model;
 
+import configuration.AppStaticData;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -10,22 +11,16 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Window;
 
 public class About extends Dialog<ButtonType>{
-	private Border componentBorder = new Border(new BorderStroke(Color.DARKGRAY, BorderStrokeStyle.SOLID, new CornerRadii(10, 10, 10, 10,false), new BorderWidths(2)));
+	
 	public About(Window owner)
 	{
         initOwner(owner);
@@ -43,14 +38,14 @@ public class About extends Dialog<ButtonType>{
 	}
 
 	private Node getDialogPaneContent() {
-        Image image = new Image("resources/images/appicon.png");
+        Image image = AppStaticData.getAppIcon();
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(200);
         imageView.setPreserveRatio(true);
         StackPane sp1 = new StackPane(imageView);
         
         Label compName = new Label();
-        compName.setText("Indeed Notepad");
+        compName.setText(AppStaticData.getAppName());
         compName.setFont(Font.font ("Verdana",FontWeight.BOLD, 20));
         StackPane sp2 = new StackPane(compName);
         
@@ -83,7 +78,7 @@ public class About extends Dialog<ButtonType>{
         gpan.addRow(1,developerInfo,developerName);
         gpan.addRow(2,email,emailVal);
         gpan.setPadding(new Insets(20,20,20,20));
-        gpan.setBorder(componentBorder);
+        gpan.setBorder(AppStaticData.getComponentBorder());
         
         Label copyright = new Label();
         copyright.setText("Copyright by Indeed Coder \u00a92021 All Rights Reserved.");
@@ -92,7 +87,7 @@ public class About extends Dialog<ButtonType>{
         vbx.getChildren().addAll(sp1,sp2,gpan/*,new StackPane(copyright)*/);
         vbx.setPadding(new Insets(20,20,20,20));
         VBox.setMargin(vbx, new Insets(5,15,5,5));
-        vbx.setBorder(componentBorder);
+        vbx.setBorder(AppStaticData.getComponentBorder());
         return vbx;
 	}
 }

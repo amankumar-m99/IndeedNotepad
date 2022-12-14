@@ -1,9 +1,6 @@
 package model.notepad;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 import javax.print.Doc;
 import javax.print.DocFlavor;
@@ -11,19 +8,12 @@ import javax.print.DocPrintJob;
 import javax.print.PrintException;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
-import javax.print.ServiceUI;
 import javax.print.SimpleDoc;
 import javax.print.attribute.DocAttributeSet;
 import javax.print.attribute.HashDocAttributeSet;
-import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.print.attribute.standard.MediaPrintableArea;
-import javax.print.attribute.standard.MediaSizeName;
-import javax.print.attribute.standard.PrinterResolution;
 
 import controller.MainPageController;
 import javafx.print.PrinterJob;
-import notepadutils.NotepadSavedStatus;
 
 public class NotepadPrinter {
 	public static void print(MainPageController mainPageController) {
@@ -89,7 +79,7 @@ public class NotepadPrinter {
 		    }
 		}
 		*/
-		DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
+//		DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
 		PrinterJob printerJob = PrinterJob.createPrinterJob();
 	    PrintService printService;
 	    if(printerJob.showPrintDialog(mainPageController.root.getScene().getWindow()))

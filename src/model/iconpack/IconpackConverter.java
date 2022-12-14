@@ -1,6 +1,7 @@
 package model.iconpack;
 
 public class IconpackConverter {
+
 	public static IconpackType getIconpackTypeFromString(String string) {
 		IconpackType iconpackType = IconpackType.COLOR;
 		switch (string) {

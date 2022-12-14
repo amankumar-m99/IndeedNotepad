@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 
 public class Iconpack {
 	private MainPageController mainPageController;
+
 	public Iconpack(MainPageController mainPageController) {
 		this.mainPageController = mainPageController;
 	}
@@ -33,6 +34,7 @@ public class Iconpack {
 		mainPageController.findMenuItem.setGraphic(getMenuItemGraphic("/resources/images/"+type+"/menuitems/find.png"));
 		mainPageController.replaceMenuItem.setGraphic(getMenuItemGraphic("/resources/images/"+type+"/menuitems/replace.png"));
 		mainPageController.selectAllMenuItem.setGraphic(getMenuItemGraphic("/resources/images/"+type+"/menuitems/selectall.png"));
+//		mainPageController.launchFullScreenMenuItem.setGraphic(getMenuItemGraphic("/resources/images/"+type+"/menuitems/fullScreen.png"));
 		mainPageController.iconPackMenuItem.setGraphic(getMenuItemGraphic("/resources/images/"+type+"/menuitems/iconpack.png"));
 		mainPageController.clearAppDataMenuItem.setGraphic(getMenuItemGraphic("/resources/images/"+type+"/menuitems/cleardata.png"));
 		mainPageController.aboutMenuItem.setGraphic(getMenuItemGraphic("/resources/images/"+type+"/menuitems/about.png"));

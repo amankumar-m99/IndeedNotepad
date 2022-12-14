@@ -1,5 +1,6 @@
 package main;
 
+import configuration.AppStaticData;
 import configuration.Configuration;
 import controller.MainPageController;
 import javafx.application.Application;
@@ -8,21 +9,17 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class AppMain extends Application{
-	public static final Image FAVICON = new Image("/resources/images/appicon.png");
 	public static int untitledFileCounter = 0;
-	public static String appName= "Indeed NotePad";
-	public static Property<String> iconPackProperty = new SimpleStringProperty(Configuration.getIconpackType().toString());
 	
 	public Stage mainStage;
 	public Property<String> stageTitleProperty;
 	public Property<String> fileSavedIndicator;
 	
 	public AppMain() {
-		stageTitleProperty = new SimpleStringProperty(appName);
+		stageTitleProperty = new SimpleStringProperty(AppStaticData.getAppName());
 		fileSavedIndicator = new SimpleStringProperty("");
 	}
 	public static void main(String[] args) {
@@ -33,14 +30,16 @@ public class AppMain extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		mainStage = primaryStage;
 		MainPageController mainPageController = new MainPageController(this);
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/mainView.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(AppStaticData.getMainViewFXMLPath()));
 		loader.setController(mainPageController);
 		Parent root = loader.load();
-		Scene scene = new Scene(root,800,800);
+		double sceneWidth = 0.6*AppStaticData.getScreenWidth();
+		double sceneHeight = 0.7*AppStaticData.getScreenHeight();
+		Scene scene = new Scene(root,sceneWidth,sceneHeight);
 		primaryStage.setScene(scene);
-//		primaryStage.setMaximized(true);
+		primaryStage.setMaximized(Configuration.getFullScreenLaunch());
 		primaryStage.titleProperty().bind(stageTitleProperty);
-		primaryStage.getIcons().add(FAVICON);
+		primaryStage.getIcons().add(AppStaticData.getAppIcon());
 		primaryStage.show();
 	}
 }

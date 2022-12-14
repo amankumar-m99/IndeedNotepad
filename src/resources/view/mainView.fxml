@@ -226,6 +226,7 @@
 				</Menu>
 				<Menu onAction="#preferenceMenuClicked" mnemonicParsing="false" text="Preference">
 					<items>
+						<CheckMenuItem fx:id="launchFullScreenMenuItem" mnemonicParsing="false" text="Launch in full-screen" selected="false" />
 						<MenuItem fx:id="iconPackMenuItem" mnemonicParsing="false" text="Icon Pack">
 							<graphic>
 								<ImageView fitHeight="22" preserveRatio="true">

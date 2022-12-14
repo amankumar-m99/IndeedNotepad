@@ -46,10 +46,7 @@ public class StatusBar extends HBox{
 	private void updateCaret(Number newValue) {
 		int caretPosition = notepad.getCaretPosition();
 		String prefixText = notepad.getText().substring(0,caretPosition);
-		String splitText = (String) notepad.getProperties().get("line.separator");
-//		int currentLine = prefixText.split(splitText).length;
 		int currentLine = countLines(prefixText);
-//		int currentCol = caretPosition - currentLine;
 		int currentCol = getCurrCaretCol(prefixText);
 		if(prefixText.length() == 0)
 			currentLine=1;
@@ -78,7 +75,7 @@ public class StatusBar extends HBox{
 	}
 
 	private void updateStatus(String newValue) {
-		String splitText = (String) notepad.getProperties().get("line.separator");
+//		String splitText = (String) notepad.getProperties().get("line.separator");
 		int totalLines = countLines(newValue);
 		int totalWords = countWords(newValue);
 		lengthCountLabel.setText(String.valueOf(newValue.length()));
@@ -132,7 +129,7 @@ public class StatusBar extends HBox{
 		hBox.setPadding(rightInsets);
 		return hBox;
 	}
-	
+
 	private Node getLinesCountHBox() {
 		linesCountLabel = new Label("0");
 		HBox hBox = new HBox(new Label("Total Lines: "),linesCountLabel);

@@ -3,6 +3,8 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import configuration.AppStaticData;
+import configuration.Configuration;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
@@ -70,6 +72,8 @@ public class MainPageController implements Initializable{
 	@FXML
 	public CheckMenuItem statusMenuItem;
 	@FXML
+	public CheckMenuItem launchFullScreenMenuItem;
+	@FXML
 	public MenuItem iconPackMenuItem;
 	@FXML
 	public MenuItem clearAppDataMenuItem;
@@ -87,7 +91,7 @@ public class MainPageController implements Initializable{
 	public MainPageController(AppMain appMain) {
 		this.appMain = appMain;
 		appMain.mainStage.setOnCloseRequest(e->closeMainstage(e));
-		AppMain.iconPackProperty.addListener((observable, oldValue, newValue) -> setIconPack());
+		AppStaticData.getIconPackProperty().addListener((observable, oldValue, newValue) -> setIconPack());
 	}
 	
 	private void setIconPack(){
@@ -98,6 +102,7 @@ public class MainPageController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		disableMenuItems = new SimpleBooleanProperty(true);
+		launchFullScreenMenuItem.setSelected(Configuration.getFullScreenLaunch());
 		Menubar.setAcceleratorsToMenuItems(this);
 		Menubar.bindMenuItemsDisabledProperty(this,disableMenuItems);
 		homePage = new HomePage(this);
@@ -186,9 +191,9 @@ public class MainPageController implements Initializable{
 		if(status.equals(NotepadSavedStatus.UNSAVED))
 			aesterisk="*";
 		if(notepad != null)
-			value = AppMain.appName + " - "+ aesterisk +notepad.getFileName();
+			value = AppStaticData.getAppName() + " - "+ aesterisk +notepad.getFileName();
 		else
-			value = AppMain.appName;
+			value = AppStaticData.getAppName();
 		appMain.stageTitleProperty.setValue(value);
 	}
 }
