@@ -102,6 +102,8 @@ public class MainPageController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		disableMenuItems = new SimpleBooleanProperty(true);
+		wordWrapMenuItem.setSelected(Configuration.getWordWrap());
+		statusMenuItem.setSelected(Configuration.getShowStatusBar());
 		launchFullScreenMenuItem.setSelected(Configuration.getFullScreenLaunch());
 		Menubar.setAcceleratorsToMenuItems(this);
 		Menubar.bindMenuItemsDisabledProperty(this,disableMenuItems);

@@ -22,6 +22,7 @@ public class AppMain extends Application{
 		stageTitleProperty = new SimpleStringProperty(AppStaticData.getAppName());
 		fileSavedIndicator = new SimpleStringProperty("");
 	}
+
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -29,12 +30,12 @@ public class AppMain extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		mainStage = primaryStage;
+		double sceneWidth = 0.6*AppStaticData.getScreenWidth();
+		double sceneHeight = 0.7*AppStaticData.getScreenHeight();
 		MainPageController mainPageController = new MainPageController(this);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(AppStaticData.getMainViewFXMLPath()));
 		loader.setController(mainPageController);
 		Parent root = loader.load();
-		double sceneWidth = 0.6*AppStaticData.getScreenWidth();
-		double sceneHeight = 0.7*AppStaticData.getScreenHeight();
 		Scene scene = new Scene(root,sceneWidth,sceneHeight);
 		primaryStage.setScene(scene);
 		primaryStage.setMaximized(Configuration.getFullScreenLaunch());
@@ -42,4 +43,5 @@ public class AppMain extends Application{
 		primaryStage.getIcons().add(AppStaticData.getAppIcon());
 		primaryStage.show();
 	}
+
 }

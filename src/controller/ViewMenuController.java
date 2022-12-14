@@ -1,5 +1,6 @@
 package controller;
 
+import configuration.Configuration;
 import javafx.event.Event;
 import javafx.scene.control.CheckMenuItem;
 
@@ -26,6 +27,7 @@ public class ViewMenuController implements MenuController{
 	}
 
 	private void showStatus(boolean isSelected) {
+		Configuration.setShowStatusBar(isSelected);
 	}
 
 }

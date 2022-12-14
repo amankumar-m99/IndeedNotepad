@@ -1,5 +1,7 @@
 package configuration;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.prefs.Preferences;
 
 import model.iconpack.IconpackConverter;
@@ -10,22 +12,33 @@ public class Configuration {
 	public static Preferences preferences = Preferences.userNodeForPackage(Configuration.class);
 	
 	private static IconpackType DEFAULT_ICONPACK = IconpackType.COLOR;
-	private static String DEFAULT_WORD_WRAP = "true";
+	private static boolean DEFAULT_WORD_WRAP = false;
+	private static boolean DEFAULT_SHOW_STATUS_BAR = true;
+	private static boolean DEFAULT_FULLSCREEN = false;
 	private static String DEFAULT_FONT = "Verdana:NORMAL:REGULAR:12";
-	private static final String PREF_ICONPACK = "iconpack";
-	private static final String PREF_WORD_WRAP = "wordwrap";
-	private static final String PREF_FONT = "font";
+	private static final String PREF_ICONPACK = "indeedNotepadIconpack";
+	private static final String PREF_WORD_WRAP = "indeedNotepadWordwrap";
+	private static final String PREF_FONT = "indeedNotepadFont";
+	private static final String PREF_STATUSBAR = "indeedNotepadStatusBar";
+	private static final String PREF_FULLSCREEN = "indeedNotepadFullScreen";
+	private static final List<String> preferencesList = setPreferenceList();
+
+	private static List<String> setPreferenceList() {
+		List<String> list = new ArrayList<>();
+		list.add(PREF_ICONPACK);
+		list.add(PREF_WORD_WRAP);
+		list.add(PREF_FONT);
+		list.add(PREF_STATUSBAR);
+		list.add(PREF_FULLSCREEN);
+		return list;
+	}
+
+	public static List<String> getPreferenceList(){
+		return preferencesList;
+	}
 
 	public static void setIconpackType(IconpackType iconpackType) {
 		preferences.put(PREF_ICONPACK, iconpackType.toString());
-	}
-
-	public static void setWordWrap(Boolean isWraped) {
-		preferences.put(PREF_WORD_WRAP, isWraped.toString());
-	}
-
-	public static void setFontString(String fontString) {
-		preferences.put(PREF_FONT, fontString);
 	}
 
 	public static IconpackType getIconpackType() {
@@ -33,32 +46,44 @@ public class Configuration {
 		return IconpackConverter.getIconpackTypeFromString(iconpackString);
 	}
 
-	public static boolean getWordWrap() {
-		String wordWrapString = preferences.get(PREF_WORD_WRAP, DEFAULT_WORD_WRAP.toString());
-		return BooleanConverter.getBooleanFromString(wordWrapString);
+	public static void setFontString(String fontString) {
+		preferences.put(PREF_FONT, fontString);
 	}
 
 	public static String getFontString() {
 		return preferences.get(PREF_FONT, DEFAULT_FONT);
 	}
 
-	public static void removePrefrences() {
-		DEFAULT_ICONPACK = getIconpackType();
-        preferences.remove(PREF_ICONPACK);
-        DEFAULT_WORD_WRAP= preferences.get(PREF_WORD_WRAP, DEFAULT_WORD_WRAP.toString());
-        preferences.remove(PREF_WORD_WRAP);
-        preferences.remove(PREF_FONT);
-    }
-
 	public static void setFullScreenLaunch(boolean value) {
-		preferences.put("FullScreenLaunch", String.valueOf(value));
+		preferences.put(PREF_FULLSCREEN, String.valueOf(value));
 	}
 
 	public static boolean getFullScreenLaunch() {
-		String result =  preferences.get("FullScreenLaunch", "false").toLowerCase();
-		if(result.startsWith("f"))
-			return false;
-		return true;
+		String result =  preferences.get(PREF_FULLSCREEN, String.valueOf(DEFAULT_FULLSCREEN)).toLowerCase();
+		return BooleanConverter.getBooleanFromString(result);
 	}
+
+	public static void setWordWrap(boolean value) {
+		preferences.put(PREF_WORD_WRAP, String.valueOf(value));
+	}
+
+	public static boolean getWordWrap() {
+		String wordWrapString = preferences.get(PREF_WORD_WRAP, String.valueOf(DEFAULT_WORD_WRAP));
+		return BooleanConverter.getBooleanFromString(wordWrapString);
+	}
+
+	public static void setShowStatusBar(boolean value) {
+		preferences.put(PREF_STATUSBAR, String.valueOf(value));
+	}
+
+	public static boolean getShowStatusBar() {
+		String result =  preferences.get(PREF_STATUSBAR, String.valueOf(DEFAULT_SHOW_STATUS_BAR));
+		return BooleanConverter.getBooleanFromString(result);
+	}
+
+	public static void removePrefrences() {
+		for(String s: preferencesList)
+			preferences.remove(s);
+    }
 
 }

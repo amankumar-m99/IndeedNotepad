@@ -1,9 +1,16 @@
 package controller;
 
+import java.util.List;
+
 import configuration.Configuration;
 import javafx.event.Event;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.MenuItem;
+import javafx.stage.Window;
+import model.ClearSavedDataDialog;
 import model.IconPackDialog;
 
 public class PreferenceMenuController implements MenuController{
@@ -43,6 +50,10 @@ public class PreferenceMenuController implements MenuController{
 	}
 	
 	private void clearAppData() {
+		Window owner = mainPageController.getAppMain().mainStage;
+		List<String> list = Configuration.getPreferenceList();
+		Dialog<ButtonType> dialog = new ClearSavedDataDialog(list, owner);
+		dialog.showAndWait();
 		Configuration.removePrefrences();
 	}
 }
