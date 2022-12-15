@@ -81,9 +81,15 @@ public class Configuration {
 		return BooleanConverter.getBooleanFromString(result);
 	}
 
-	public static void removePrefrences() {
-		for(String s: preferencesList)
-			preferences.remove(s);
+	public static boolean removePrefrences() {
+		try {
+			for(String s: preferencesList)
+				preferences.remove(s);
+		}
+		catch (Exception e) {
+			return false;
+		}
+		return true;
     }
 
 }

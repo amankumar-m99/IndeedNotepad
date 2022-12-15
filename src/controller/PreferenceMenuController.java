@@ -1,10 +1,11 @@
 package controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import configuration.Configuration;
 import javafx.event.Event;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Dialog;
@@ -12,6 +13,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Window;
 import model.ClearSavedDataDialog;
 import model.IconPackDialog;
+import notepadutils.CustomAlert;
 
 public class PreferenceMenuController implements MenuController{
 	private MainPageController mainPageController;
@@ -50,10 +52,28 @@ public class PreferenceMenuController implements MenuController{
 	}
 	
 	private void clearAppData() {
+		AlertType alertType = AlertType.CONFIRMATION;
+		String titleText = "Clear Preferences";
+		String headerText = "Clear all the preferences ?";
+		String contentText = "This action will reset the default preferences.";
 		Window owner = mainPageController.getAppMain().mainStage;
-		List<String> list = Configuration.getPreferenceList();
-		Dialog<ButtonType> dialog = new ClearSavedDataDialog(list, owner);
-		dialog.showAndWait();
-		Configuration.removePrefrences();
+		CustomAlert alert = new CustomAlert(alertType, titleText, headerText, contentText, owner);
+		Optional<ButtonType> result = alert.showAndWait();
+		if(!result.isPresent() || result.get().equals(ButtonType.CANCEL))
+			return;
+		if(Configuration.removePrefrences()) {
+			alertType = AlertType.INFORMATION;
+			titleText = "Success";
+			headerText = "Cleared all the preferences successfully.";
+			contentText = "Preferences are restored to default values";
+		}
+		else {
+			alertType = AlertType.ERROR;
+			titleText = "Failed";
+			headerText = "Failed to clear some preferences.";
+			contentText = "";
+		}
+		alert = new CustomAlert(alertType, titleText, headerText, contentText, owner);
+		alert.showAndWait();
 	}
 }
