@@ -4,14 +4,15 @@ import java.util.Optional;
 
 import configuration.Configuration;
 import javafx.event.Event;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuItem;
-import javafx.scene.text.Font;
 import model.FontDialog;
 
 public class FormatMenuController implements MenuController {
 	
 	private MainPageController mainPageController;
+
 	public FormatMenuController(MainPageController mainPageController) {
 		this.mainPageController = mainPageController;
 	}
@@ -38,9 +39,11 @@ public class FormatMenuController implements MenuController {
 
 	private void handleFonts() {
 		FontDialog fontDialog = new FontDialog(mainPageController.getAppMain().mainStage);
-		Optional<Font> font = fontDialog.getChoosenFont();
-		if(font.isPresent())
-		mainPageController.getNotepad().setFont(font.get());
+		Optional<ButtonType> result = fontDialog.showAndWait();
+		if(!result.isPresent() || result.get().equals(ButtonType.CANCEL))
+			return;
+		Configuration.setFontString(fontDialog.getAppliedFontString());
+		mainPageController.getNotepad().setFont(fontDialog.getAppliedFont());
 	}
 
 }

@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import configuration.Configuration;
@@ -8,12 +7,12 @@ import javafx.event.Event;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.Dialog;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Window;
-import model.ClearSavedDataDialog;
-import model.IconPackDialog;
+import model.iconpack.IconPackDialog;
 import notepadutils.CustomAlert;
+import theme.ThemeChooserDialog;
 
 public class PreferenceMenuController implements MenuController{
 	private MainPageController mainPageController;
@@ -26,15 +25,18 @@ public class PreferenceMenuController implements MenuController{
 	public void handleEvent(Event event) {
 		String id = "";
 		Object obj = event.getTarget();
-		if(obj instanceof MenuItem)
-			id = ((MenuItem)event.getTarget()).getId();
+		if(obj instanceof Menu)
+			id = "";
+		else if(obj instanceof MenuItem)
+			id = ((MenuItem)obj).getId();
 		else if(obj instanceof CheckMenuItem)
-			id = ((CheckMenuItem)event.getTarget()).getId();
+			id = ((CheckMenuItem)obj).getId();
 		else
 			id = "";
 		switch (id) {
 		case "launchFullScreenMenuItem": toggleLaunchFullScreen(event); break;
 		case "iconPackMenuItem": showIconPacks(); break;
+		case "themeMenuItem": showThemeChooser(); break;
 		case "clearAppDataMenuItem": clearAppData(); break;
 		default: break;
 		}
@@ -50,7 +52,12 @@ public class PreferenceMenuController implements MenuController{
 		IconPackDialog dialog = new IconPackDialog(mainPageController.getAppMain().mainStage);
 		dialog.showIconPackDialog();
 	}
-	
+
+	private void showThemeChooser(){
+		ThemeChooserDialog dialog = new ThemeChooserDialog(mainPageController.getAppMain().mainStage);
+		dialog.showThemeChooserDialog();
+	}
+
 	private void clearAppData() {
 		AlertType alertType = AlertType.CONFIRMATION;
 		String titleText = "Clear Preferences";

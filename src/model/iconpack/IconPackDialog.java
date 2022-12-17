@@ -1,4 +1,4 @@
-package model;
+package model.iconpack;
 
 import java.util.Optional;
 
@@ -18,7 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Window;
-import model.iconpack.IconpackType;
 
 public class IconPackDialog extends Dialog<ButtonType>{
 	private ToggleGroup iconPackToggleGroup = new ToggleGroup();
@@ -76,7 +75,7 @@ public class IconPackDialog extends Dialog<ButtonType>{
 			radioButton.setSelected(true);
 		return radioButton;
 	}
-	
+
 	private ImageView getIconImageView(String path) {
 		ImageView imageView = new ImageView(new Image(path));
 		imageView.setPreserveRatio(true);

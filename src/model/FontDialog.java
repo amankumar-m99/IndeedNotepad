@@ -6,8 +6,10 @@ import java.util.Optional;
 import configuration.Configuration;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -29,17 +31,20 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
+import notepadutils.CustomAlert;
 import notepadutils.FontConverter;
 
 public class FontDialog extends Dialog<ButtonType>{
+	private final int MAX_FONT_SIZE = 80;
+	private Window owner;
 	private ComboBox<String> fontFamilyComboBox;
 	private ComboBox<FontWeight> fontWeightComboBox;
 	private ComboBox<FontPosture> fontPostureComboBox;
 	private ComboBox<String> fontSizeComboBox;
 	private String configFontString;
 	private Text text;
-	private boolean isFontValid;
 	private ObservableList<String> fontFamilyList;
+	private String appliedFontString;
 	private Font appliedFont;
 	private int choosenFontSize=0;
 
@@ -50,15 +55,18 @@ public class FontDialog extends Dialog<ButtonType>{
 	public FontDialog(Window owner) {
 		configFontString = Configuration.getFontString();
 		fontFamilyList = FXCollections.observableArrayList(Font.getFamilies());
+		this.owner = owner;
 		initOwner(owner);
 		setTitle("Font Settings");
 		setDialogPane(getFontsDialogPane());
 		setResizable(true);
-		isFontValid=false;
+		final Button applyButton = (Button) getDialogPane().lookupButton(ButtonType.APPLY);
+		applyButton.addEventFilter(ActionEvent.ACTION, (event) -> {
+			  if (!validateFont()) {
+			    event.consume();
+			  }
+			});
 		setOnShown(e->validateFont());
-		setOnCloseRequest(e->{
-			isFontValid = validateFont();
-		});
 	}
 
 	private DialogPane getFontsDialogPane() {
@@ -113,12 +121,19 @@ public class FontDialog extends Dialog<ButtonType>{
 
 	private Node getFontFamilyNode() {
 		fontFamilyComboBox = new ComboBox<>();
-		fontFamilyComboBox.setEditable(true);
+//		fontFamilyComboBox.setEditable(true);
 		fontFamilyComboBox.setPromptText("-font family-");
 		fontFamilyComboBox.setItems(fontFamilyList);
 		int i = fontFamilyList.indexOf(FontConverter.getFontFamilyFromFontString(configFontString));
 		fontFamilyComboBox.getSelectionModel().select(i);
 		fontFamilyComboBox.setOnAction(e->validateFont());
+//		fontFamilyComboBox.setOnKeyPressed(e -> {
+//		    if (e.getCode() == KeyCode.ENTER) {
+//		    	System.out.println(fontFamilyComboBox.getValue());
+////		        validateFont(e);
+//		    }
+//		});
+//		fontFamilyComboBox.setOn
 		return fontFamilyComboBox;
 	}
 
@@ -138,10 +153,10 @@ public class FontDialog extends Dialog<ButtonType>{
 	private Node getFontPostureNode() {
 		ObservableList<FontPosture> list = FXCollections.observableArrayList();
 		EnumSet.allOf(FontPosture.class).forEach(fontPosture -> list.add(fontPosture));
+		int i = list.indexOf(FontConverter.getFontPostureFromFontString(configFontString));
 		fontPostureComboBox = new ComboBox<>();
 		fontPostureComboBox.setPromptText("-font Posture-");
 		fontPostureComboBox.setItems(list);
-		int i = list.indexOf(FontConverter.getFontPostureFromFontString(configFontString));
 		fontPostureComboBox.getSelectionModel().select(i);
 		fontPostureComboBox.setOnAction(e->validateFont());
 		fontPostureComboBox.prefWidthProperty().bind(fontFamilyComboBox.widthProperty());
@@ -150,29 +165,40 @@ public class FontDialog extends Dialog<ButtonType>{
 
 	private Node getFontSizeNode() {
 		ObservableList<String> list = FXCollections.observableArrayList();
-		int fontSizeArr[] = new int[] {8,10,12,14,16,18,20,22,24,26,28,36,48,72};
+		int fontSizeArr[] = new int[] {8,10,12,14,16,18,20,22,24,26,28,32,36,40,44,48,52,60,72,80};
 		for(int i:fontSizeArr) {
 			list.add(String.valueOf(i));
 		}
+		int i = list.indexOf(FontConverter.getFontSizeFromFontString(configFontString));
 		Button minusBtn = new Button("-");
 		Button plusBtn = new Button("+");
 		minusBtn.setStyle("-fx-font-weight:bold");
 		plusBtn.setStyle("-fx-font-weight:bold");
-		minusBtn.setOnAction(e->plusMinusFont(FontSizeChange.DECREMENT));
-		plusBtn.setOnAction(e->plusMinusFont(FontSizeChange.INCREMENT));
+		minusBtn.setOnAction(e->changeFontSize(FontSizeChange.DECREMENT));
+		plusBtn.setOnAction(e->changeFontSize(FontSizeChange.INCREMENT));
 		fontSizeComboBox = new ComboBox<>();
 		fontSizeComboBox.setPromptText("-font size-");
-		fontSizeComboBox.setEditable(true);
+//		fontSizeComboBox.setEditable(true);
 		fontSizeComboBox.setItems(list);
-		int i = list.indexOf(FontConverter.getFontSizeFromFontString(configFontString));
-		fontSizeComboBox.getSelectionModel().select(i);
+		if(i != -1)
+			fontSizeComboBox.getSelectionModel().select(i);
+		else
+			fontSizeComboBox.setValue(FontConverter.getFontSizeFromFontString(configFontString));
 		HBox hbox = new HBox(0,minusBtn,fontSizeComboBox,plusBtn);
-//		choosenFontSize = Integer.parseInt(fontSizeComboBox.getSelectionModel().getSelectedItem());
+		choosenFontSize = Integer.parseInt(fontSizeComboBox.getValue());
 		fontSizeComboBox.setOnAction(e->validateFont());
+//		fontSizeComboBox.getEditor().setOnKeyPressed(e->{
+//			System.out.println(",dnvkjfhoi;agheioh");
+//			if(e.getCode() == KeyCode.ENTER) {
+////				fontSizeComboBox.setValue(fontSizeComboBox.getEditor().getText());
+//				System.out.println("Valllsakbweih");
+//				validateFontSize();
+//			}
+//		});
 		return hbox;
 	}
 
-	private void plusMinusFont(FontSizeChange changer) {
+	private void changeFontSize(FontSizeChange changer) {
 		String currentFontSize = fontSizeComboBox.getValue();
 		int fontSize=0;
 		try {
@@ -182,41 +208,71 @@ public class FontDialog extends Dialog<ButtonType>{
 			fontSize = choosenFontSize;
 		}
 		switch (changer) {
-		case INCREMENT: fontSize++; break;
-		case DECREMENT: fontSize--; break;
+		case INCREMENT:
+			if(fontSize >= MAX_FONT_SIZE)
+				return;
+			fontSize++; break;
+		case DECREMENT:
+			if(fontSize <= 1)
+				return;
+			fontSize--; break;
 		}
+		choosenFontSize = fontSize;
 		fontSizeComboBox.setValue(String.valueOf(fontSize));
 	}
-	
-	private boolean validateFont() {
+
+	private Optional<CustomAlert> validateFontSize() {
 		int size=0;
+		AlertType alertType = AlertType.ERROR;
+		String titleText="";
+		String headerText="";
+		String contentText="";
+		String fontSizeStrValue = fontSizeComboBox.getValue().trim();
+		if(fontSizeStrValue == null || fontSizeStrValue.isEmpty()) {
+			titleText = "Invalid font size";
+			headerText = "Font size is required. Font size cannot be empty";
+			return Optional.ofNullable(new CustomAlert(alertType, titleText, headerText, contentText, owner));
+		}
+		try {
+			size = Integer.parseInt(fontSizeStrValue);
+			if(size < 1 || size > MAX_FONT_SIZE) {
+				titleText = "Font size out of range";
+				headerText = String.format("Font size must be in the range 1 to %d.", MAX_FONT_SIZE);
+				return Optional.ofNullable(new CustomAlert(alertType, titleText, headerText, contentText, owner));
+			}
+		}
+		catch (Exception e) {
+			titleText = "Invalid font size";
+			headerText = "Invalid value for font size";
+			contentText = "Font size must be a number";
+			return Optional.ofNullable(new CustomAlert(alertType, titleText, headerText, contentText, owner));
+		}
+		choosenFontSize = size;
+		return Optional.ofNullable(null);
+	}
+
+	public boolean validateFont() {
+		Optional<CustomAlert> validFontSize = validateFontSize();
+		if(validFontSize.isPresent()) {
+			validFontSize.get().showAndWait();
+			return false;
+		}
 		String family = fontFamilyComboBox.getValue();
 		FontWeight weight = fontWeightComboBox.getValue();
 		FontPosture posture = fontPostureComboBox.getValue();
-		try {			
-			size = Integer.parseInt(fontSizeComboBox.getValue().trim());
-		}
-		catch (Exception e) {
-			return false;
-		}
-		if(size < 1 || size >80)
-			return false;
-		if(!fontFamilyList.contains(family))
-			return false;
-		appliedFont = Font.font(family,weight,posture,size);
+		int fontSize = Integer.parseInt(fontSizeComboBox.getValue().trim());
+		appliedFontString = FontConverter.getFontStringFromFontComponents(family, weight, posture,fontSize);
+		appliedFont = Font.font(family,weight,posture,fontSize);
 		text.setFont(appliedFont);
-		Configuration.setFontString(FontConverter.getFontStringFromFontComponents(family, weight, posture,size));
 		return true;
 	}
 
-	public Optional<Font> getChoosenFont() {
-		Optional<ButtonType> result = showAndWait();
-		if(!result.isPresent() || result.get().equals(ButtonType.CANCEL)) {
-			return Optional.ofNullable(null);
-		}
-		if(!isFontValid)
-			return Optional.ofNullable(null);
-		return Optional.ofNullable(appliedFont);
+	public String getAppliedFontString() {
+		return appliedFontString;
+	}
+
+	public Font getAppliedFont() {
+		return appliedFont;
 	}
 
 }

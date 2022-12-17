@@ -7,11 +7,14 @@ import java.util.prefs.Preferences;
 import model.iconpack.IconpackConverter;
 import model.iconpack.IconpackType;
 import notepadutils.BooleanConverter;
+import theme.Theme;
+import theme.ThemeConverter;
 
 public class Configuration {
 	public static Preferences preferences = Preferences.userNodeForPackage(Configuration.class);
 	
 	private static IconpackType DEFAULT_ICONPACK = IconpackType.COLOR;
+	private static Theme DEFAULT_THEME = Theme.LIGHT;
 	private static boolean DEFAULT_WORD_WRAP = false;
 	private static boolean DEFAULT_SHOW_STATUS_BAR = true;
 	private static boolean DEFAULT_FULLSCREEN = false;
@@ -19,6 +22,7 @@ public class Configuration {
 	private static final String PREF_ICONPACK = "indeedNotepadIconpack";
 	private static final String PREF_WORD_WRAP = "indeedNotepadWordwrap";
 	private static final String PREF_FONT = "indeedNotepadFont";
+	private static final String PREF_THEME = "indeedNotepadTheme";
 	private static final String PREF_STATUSBAR = "indeedNotepadStatusBar";
 	private static final String PREF_FULLSCREEN = "indeedNotepadFullScreen";
 	private static final List<String> preferencesList = setPreferenceList();
@@ -28,6 +32,7 @@ public class Configuration {
 		list.add(PREF_ICONPACK);
 		list.add(PREF_WORD_WRAP);
 		list.add(PREF_FONT);
+		list.add(PREF_THEME);
 		list.add(PREF_STATUSBAR);
 		list.add(PREF_FULLSCREEN);
 		return list;
@@ -44,6 +49,15 @@ public class Configuration {
 	public static IconpackType getIconpackType() {
 		String iconpackString = preferences.get(PREF_ICONPACK, DEFAULT_ICONPACK.toString());
 		return IconpackConverter.getIconpackTypeFromString(iconpackString);
+	}
+
+	public static void setTheme(Theme theme) {
+		preferences.put(PREF_THEME, theme.toString());
+	}
+
+	public static Theme getTheme() {
+		String themeString = preferences.get(PREF_THEME, DEFAULT_THEME.toString());
+		return ThemeConverter.getThemeFromString(themeString);
 	}
 
 	public static void setFontString(String fontString) {

@@ -8,6 +8,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 import main.AppMain;
 import model.SaveDialog;
+import model.exporter.ExportOptionsDialog;
 import model.notepad.Notepad;
 import model.notepad.NotepadCreater;
 import model.notepad.NotepadOpener;
@@ -83,6 +84,11 @@ public class FileMenuController implements MenuController{
 	}
 	
 	private void exportNotepad() {
+		ExportOptionsDialog dialog = new ExportOptionsDialog(mainPageController);
+		Optional<ButtonType> response = dialog.showAndWait();
+		if(!response.isPresent() || response.get().equals(ButtonType.CANCEL))
+			return;
+		dialog.createPDF();
 	}
 	
 	private void closeNotepad() {

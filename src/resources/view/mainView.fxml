@@ -226,16 +226,29 @@
 				</Menu>
 				<Menu onAction="#preferenceMenuClicked" mnemonicParsing="false" text="Preference">
 					<items>
-						<CheckMenuItem fx:id="launchFullScreenMenuItem" mnemonicParsing="false" text="Launch in full-screen" selected="false" />
-						<MenuItem fx:id="iconPackMenuItem" mnemonicParsing="false" text="Icon Pack">
-							<graphic>
-								<ImageView fitHeight="22" preserveRatio="true">
-									<image>
-										<Image url="@/resources/images/color/menuitems/iconpack.png" />
-									</image>
-								</ImageView>
-							</graphic>
-						</MenuItem>
+						<Menu onAction="#preferenceMenuClicked" mnemonicParsing="false" text="Launch">
+							<CheckMenuItem fx:id="launchFullScreenMenuItem" mnemonicParsing="false" text="Full Screen" selected="false" />
+						</Menu>
+						<Menu onAction="#preferenceMenuClicked" mnemonicParsing="false" text="Appearance">
+							<MenuItem fx:id="iconPackMenuItem" mnemonicParsing="false" text="Icon Pack">
+								<graphic>
+									<ImageView fitHeight="22" preserveRatio="true">
+										<image>
+											<Image url="@/resources/images/color/menuitems/iconpack.png" />
+										</image>
+									</ImageView>
+								</graphic>
+							</MenuItem>
+							<MenuItem fx:id="themeMenuItem" mnemonicParsing="false" text="Theme">
+								<graphic>
+									<ImageView fitHeight="22" preserveRatio="true">
+										<image>
+											<Image url="@/resources/images/theme.png" />
+										</image>
+									</ImageView>
+								</graphic>
+							</MenuItem>
+						</Menu>
 						<MenuItem fx:id="clearAppDataMenuItem" mnemonicParsing="false" text="Clear Preferences">
 						<graphic>
 								<ImageView fitHeight="22" preserveRatio="true">
