@@ -31,6 +31,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
+import model.customcomponents.CumpulsoryLabel;
 import notepadutils.CustomAlert;
 import notepadutils.FontConverter;
 
@@ -92,12 +93,10 @@ public class FontDialog extends Dialog<ButtonType>{
 	}
 
 	private Node getInfoPane() {
-		Label label1  = new Label("*");
-		label1.setStyle("-fx-font-weight:bold;-fx-font-size:18;-fx-text-fill:red;");
-		Label label2  = new Label("Note that sample text does not updates for combinations that are not available.");
-		label2.setWrapText(true);
-		label2.setStyle("-fx-font-weight:bold;-fx-text-fill:blue;");
-		return new HBox(5,label1,label2);
+		CumpulsoryLabel label  = new CumpulsoryLabel("Note that sample text does not updates for combinations that are not available.");
+		label.setWrapText(true);
+		label.setStyle("-fx-font-weight:bold;-fx-text-fill:blue;");
+		return new HBox(5,label);
 	}
 
 	private Node getSampleTextPane() {
