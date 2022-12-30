@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Optional;
 
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
@@ -133,14 +134,16 @@ public class FileMenuController implements MenuController{
 		boolean saveSuccess = NotepadSaver.saveFile(mainPageController);
 		return saveSuccess;
 	}
-	
+
 	private Optional<ButtonType> askSaveNotepad() {
 		SaveDialog saveDialog = new SaveDialog(notepad.getFileName(), mainPageController.getAppMain().mainStage);
 		return saveDialog.showAndWait();
 	}
-	
+
 	private void exit() {
-		mainPageController.getAppMain().mainStage.close();
+		if(canProceedNewNotepad()) {
+			mainPageController.getAppMain().mainStage.close();
+		}
 	}
 }
 

@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import theme.Theme;
 
 public class AppMain extends Application{
 	public static int untitledFileCounter = 0;
@@ -41,7 +42,22 @@ public class AppMain extends Application{
 		primaryStage.setMaximized(Configuration.getFullScreenLaunch());
 		primaryStage.titleProperty().bind(stageTitleProperty);
 		primaryStage.getIcons().add(AppStaticData.getAppIcon());
+		setTheme();
 		primaryStage.show();
+	}
+
+	public void setTheme() {
+		mainStage.getScene().getStylesheets().clear();
+		Theme theme = Configuration.getTheme();
+		switch(theme) {
+		case DARK:
+			mainStage.getScene().getStylesheets().add("/resources/css/darkTheme.css");
+			break;
+		case LIGHT:
+			mainStage.getScene().getStylesheets().add("/resources/css/lightTheme.css");
+			break;
+		}
+		mainStage.getScene().getStylesheets().add("/resources/css/mainNotepadCSS.css");
 	}
 
 }

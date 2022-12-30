@@ -106,8 +106,8 @@ public class FontDialog extends Dialog<ButtonType>{
 		Border border = new Border(borderStroke);
 		text = new Text("Sample Text");
 		StackPane stackPane = new StackPane(text);
-		stackPane.setPrefHeight(300);
-		stackPane.setMaxHeight(300);
+		stackPane.setPrefHeight(200);
+		stackPane.setMaxHeight(200);
 		stackPane.setBorder(border);
 		return stackPane;
 	}

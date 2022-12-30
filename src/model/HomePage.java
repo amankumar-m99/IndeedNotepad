@@ -92,18 +92,8 @@ public class HomePage {
 	}
 
 	private Label getCustomLabel(String labelText) {
-		String mouseEnteredCSS = "-fx-font-size:19;-fx-font-weight:bold;-fx-text-fill:blue";
-		String mouseExitedCSS = "-fx-font-size:19;-fx-font-weight:bold;-fx-text-fill:black";
 		Label label = new Label(labelText);
-		label.setStyle(mouseExitedCSS);
-		label.setOnMouseEntered(e->{
-			label.setUnderline(true);
-			label.setStyle(mouseEnteredCSS);
-		});
-		label.setOnMouseExited(e->{
-			label.setUnderline(false);
-			label.setStyle(mouseExitedCSS);
-		});
+		label.getStyleClass().add("homepage-shortcut-label");
 		return label;
 	}
 	
@@ -122,6 +112,7 @@ public class HomePage {
 		}
 		return hbox;
 	}
+
 	private Node getKeyImage(Key key, Insets insets) {
 		IconpackType type = Configuration.getIconpackType();
 		String textColor = "";
@@ -193,7 +184,7 @@ public class HomePage {
 	private Node getDropBox() {
 		Border componentBorder = new Border(new BorderStroke(Color.DARKGRAY, BorderStrokeStyle.DASHED, new CornerRadii(10, 10, 10, 10,false), new BorderWidths(5)));
 		Label label = new Label("Drop the file here to open");
-		label.setStyle("-fx-font-size:18;-fx-font-weight:bold;-fx-text-fill:black");
+		label.getStyleClass().add("dropbox-label");
 		VBox vbox = new VBox(10,label,dragndropImg);
 		vbox.setAlignment(Pos.CENTER);
 		StackPane dropBox = new StackPane(vbox);

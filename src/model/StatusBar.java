@@ -34,11 +34,12 @@ public class StatusBar extends HBox{
 
 	public StatusBar(MainPageController mainPageController) {
 		this.notepad = mainPageController.getNotepad();
+		getStyleClass().add("status-bar");
 		HBox expane = new HBox(10);
 		HBox.setHgrow(expane, Priority.ALWAYS);
 		getChildren().addAll(getLengthCountHBox(),getLinesCountHBox(),getWordsCountHBox(),expane);
 		getChildren().addAll(getCurrentLineHBox(),getCurrentColHBox(),getCurrentPosHBox(),newLineHBox()/*,encodingHBox()*/);
-		setPadding(new Insets(10,20,10,20));
+		setPadding(new Insets(6,20,6,20));
 		notepad.textProperty().addListener((observable, oldValue, newValue) -> updateStatus(newValue));
 		notepad.caretPositionProperty().addListener((observable, oldValue, newValue) -> updateCaret(newValue));
 	}

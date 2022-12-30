@@ -1,0 +1,368 @@
+.root{
+	-fx-background: -app-color3;
+	-primary-text-color: -app-primary-text-color;
+	-secondary-text-color: -app-hover-text-color;
+	-fx-pgcolor: linear-gradient(-app-color3 0%, -app-color2 100%);
+	-primary-background-color: -fx-pgcolor;
+	/* hover color */
+	-hover-text-color: -app-hover-text-color;
+	-hover-background-color: -app-hover-color;
+	/* pressed color */
+	-pressed-color: -app-color2;
+	/* border color */
+	-border-clr: -app-border-color;
+	/* selection color */
+	-selection-color: -app-selected-color;
+	-selection-text-color: -app-selected-text-color;
+	/* button colors */
+	-button-outerbackground-color: linear-gradient(-app-color1 0%, -app-color4 100%);
+	-button-innerbackground-color: linear-gradient(-app-color2 0%, -app-color3 100%);
+	-button-hover-color: -app-color4 70%;
+	/* tooltip colors */
+	-tooltip-background: -app-primary-text-color;
+	-tooltip-text-color: -app-hover-text-color;
+	/* toggle button */
+	-toggle-button-selected-text-color: #96b946;
+	/* table view */
+	-table-row-cell-color: -app-color1;
+	-table-odd-row-cell-color: -app-color4;
+	-table-header-hover-color: -app-color4 70%;
+	-base-color: -app-color4;
+}
+
+/*------------------- ContextMenu -------------------*/
+.context-menu {
+	-fx-background-color: -primary-background-color;
+	-fx-opacity: 0.9;
+	-fx-border-color: -app-color1;
+	-fx-border-width : 2px 2px 2px 2px;
+	-fx-border-rdius: 8px;
+	-fx-text-fill: -primary-text-color;
+}
+.context-menu .text {
+	-fx-fill: -primary-text-color;
+}
+.context-menu .menu-item:hover .text {
+    -fx-fill: -selection-text-color;
+}
+
+/*------------------- Menubar -------------------*/
+.menu-bar {
+	-fx-background-color: -app-color2;
+}
+
+/*---------------------- Menu -----------------------*/
+.menu:hover, .menu:showing {
+	-fx-background-color: -selection-color;
+}
+.menu:hover > .label, .menu:showing > .label {
+	-fx-text-fill: -selection-text-color;
+}
+.menu .label {
+	-fx-text-fill: -primary-text-color;
+}
+.menu:disabled {
+    -fx-opacity: 0.2;
+}
+
+/*--------------------- ToolBar ----------------------*/
+.tool-bar {
+	-fx-border-color: -app-color1;
+	-fx-border-width: 0px 2px 2px 2px;
+}
+
+/*-------------------- MenuItems ---------------------*/
+.menu-item:focused {
+     -fx-background: -selection-color;
+}
+.menu-item:hover .text {
+	-fx-text-fill: -selection-text;	
+}
+.menu-item > .container > .menu-button > .label {
+	-fx-background-color: -primary-background-color;
+	-fx-text-fill: -primary-text-color;
+}
+.menu-item > .container > .menu-button > .label:hover {
+	-fx-background-color: transparent;
+}
+.menu-item > .label {
+	-fx-background-color: transparent;
+}
+.menu-item > .label:hover {
+	-fx-background-color: transparent;
+}
+.menu-item:disabled > .label {
+    -fx-opacity: 0.5;
+}
+.menu-item:show-mnemonics > .mnemonic-underline {
+    -fx-padding: 0 0 0 0;
+	-fx-background-color: -primary-background-color;
+	-fx-text-fill: -primary-text-color;
+}
+
+/*------------------ CheckMenuItems -------------------*/
+.check-menu-item:checked .check {
+    -fx-background-color: -primary-text-color;
+    -fx-shape: "M0,5H2L4,8L8,0H10L5,10H3Z";
+    -fx-scale-shape: false;
+}
+.check-menu-item:focused:checked .check {
+    -fx-background-color: -primary-text-color;
+}
+/*---------------------- TextArea -----------------------*/
+.text-area {
+  -fx-highlight-fill: -app-highlighted-text-background-color;
+  -fx-highlight-text-fill: -app-highlighted-text-color;
+  -fx-text-fill:-primary-text-color;
+  -fx-border-color: -app-color1;
+  -fx-border-width: 2px;
+}
+.text-area:focused {
+  -fx-background-color: -app-color1;
+}
+.text-area .content {
+    -fx-padding: 3 5 3 5; 
+    -fx-cursor: text;
+    -fx-background-color: -app-notepad-background-color;
+}
+
+/*--------------------------- ScrollBar ----------------------------*/ 
+.scroll-bar:horizontal {
+    -fx-background-color: -border-clr, linear-gradient(to bottom, derive(-base-color,30%) 5%, derive(-base-color,-17%) 100%);
+    -fx-background-insets: 0, 1;
+}
+.scroll-bar:horizontal:focused {
+    -fx-background-color: -fx-focus-color, -border-clr, linear-gradient(to bottom, derive(-base-color,30%) 5%, derive(-base-color,-17%) 100%);
+    -fx-background-insets: -1.4, 0, 1;
+}
+.scroll-bar:vertical {
+    -fx-background-color: linear-gradient(to top, derive(-app-color1,30%) 5%, derive(-app-color2,-17%) 100%);
+    -fx-background-insets: 0, 1;
+}
+.scroll-bar:vertical:focused {
+    -fx-background-color: -fx-focus-color, -border-clr, linear-gradient(to top, derive(-fx-color,30%) 5%, derive(-fx-color,-17%) 100%);
+    -fx-background-insets: -1.4, 0, 1;
+    -fx-padding: 0, 1;
+}
+.scroll-bar:horizontal .thumb {
+	-fx-color: -app-color1;
+    -fx-background-color: -border-clr,
+        linear-gradient(to bottom, derive(-fx-color,95%), derive(-fx-color,10%)),
+        linear-gradient(to bottom, derive(-fx-color,38%), derive(-fx-color,-16%));
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0.5em;
+}
+.scroll-bar:vertical .thumb {
+	-fx-color: -app-color1;
+    -fx-background-color: -border-clr,
+        linear-gradient(to right, derive(-fx-color,95%), derive(-fx-color,10%)),
+        linear-gradient(to right, derive(-fx-color,38%), derive(-fx-color,-16%));
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0.5em;
+}
+.scroll-bar:focused .thumb {
+    -fx-color: -app-color1, -fx-focused-base;
+}
+.scroll-bar .thumb:hover {
+    -fx-color: -app-color3, -fx-hover-base;
+}
+.scroll-bar .thumb:pressed {
+    -fx-color: -pressed-color;
+}
+.scroll-bar:horizontal .track {
+	-fx-background-color: -border-clr,
+        linear-gradient(to bottom, derive(-fx-color,-15%), derive(-fx-color,2.2%) 20%, derive(-fx-color,60%));
+    -fx-background-insets:  0, 2;
+    -fx-background-radius: 0.5em; /* makes sure this remains circular */
+}
+.scroll-bar:horizontal .track-background {
+	-fx-background-color: -border-clr,
+        linear-gradient(to bottom, derive(-fx-color,-15%), derive(-fx-color,2.2%) 20%, derive(-fx-color,60%));
+    -fx-background-insets:  0, 1;
+}
+.scroll-bar:vertical .track {
+	-fx-background-color: -border-clr,
+        linear-gradient(to right, derive(-fx-color,-15%), derive(-fx-color,2.2%) 20%, derive(-fx-color,60%));
+    -fx-background-insets:  0, 2;
+    -fx-padding: 0, 3;
+    /*-fx-background-radius: 0.5em;*/
+}
+.scroll-bar:vertical .track-background {
+	-fx-background-color: -border-clr,
+        linear-gradient(to right, derive(-fx-color,-15%), derive(-fx-color,2.2%) 20%, derive(-fx-color,60%));
+    -fx-background-insets:  0, 2;
+    -fx-padding: 0, 3;
+}
+.scroll-bar .increment-button {
+	-fx-background-color: -border-clr,
+        linear-gradient(to bottom, derive(-app-color1,30%) 5%, derive(-app-color2,-17%));
+    -fx-background-insets:  0, 1;
+    -fx-padding: 0.25em; /* 3 */
+}
+.scroll-bar .decrement-button {
+    -fx-background-color: -border-clr,
+        linear-gradient(to bottom, derive(-app-color1,30%) 5%, derive(-app-color1,-17%));
+    -fx-background-insets:  0, 1;
+    -fx-padding: 0.25em;
+}
+.scroll-bar:horizontal .increment-arrow {
+	-fx-background-color: -primary-text-color; /*, -fx-mark-color*/
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+    -fx-shape: "M 4 0 L 0 -3 L 0 3 z";
+}
+.scroll-bar:vertical .increment-arrow {
+	-fx-background-color: -primary-text-color; /*, -fx-mark-color*/
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+    -fx-shape: "M -3 0 L 0 4 L 3 0 z";
+}
+.scroll-bar:horizontal .decrement-arrow {
+	-fx-background-color: -primary-text-color; /*, -fx-mark-color*/
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-padding: 0.5em 0.333333em 0.0em 0.0em; /* 6 4 0 0 */
+    -fx-shape: "M 0 0 L 4 -3 L 4 3 z";
+}
+.scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: -primary-text-color; /*, -fx-mark-color*/
+    /* -fx-background-insets: 1 0 -1 0, 0; */
+    -fx-padding: 0.333333em 0.5em 0.0em 0.0em; /* 4 6 0 0 */
+    -fx-shape: "M -3 0 L 0 -4 L 3 0 z";
+}
+.scroll-bar:disabled {
+    -fx-opacity: -fx-disabled-opacity;
+}
+/*Opacity of the parent is applied to children so we make the opacity 1.0 here to avoid double translucency */
+/*:disabled > * > .scroll-bar {
+    -fx-opacity: 1.0;
+}*/
+
+/*----------------------- ComboBox ------------------*/
+.combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -primary-text-color;
+    /* -fx-cell-size: 1.66667em; */
+}
+.combo-box-popup .list-view {
+    -fx-background-color: -primary-background-color;
+    /*-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 ); */
+}    
+.combo-box-popup .list-view .list-cell {
+	/* -fx-padding:2 3 2 3; */
+    /* No alternate highlighting */
+    -fx-background-color: -primary-background-color;
+}
+.combo-box-popup .list-view .list-cell:filled:selected {
+	-fx-background-color: -selection-color;
+    -fx-text-fill: -selection-text-color;	
+}
+.combo-box-popup .list-view .list-cell:filled:selected:hover {
+	-fx-background-color: -hover-background-color;
+    -fx-text-fill: -hover-text-color;
+}
+.combo-box-popup .list-view .list-cell:hover {
+	/* -fx-padding:3 3 3 3; */
+    -fx-background-color: -hover-background-color;
+    /* -fx-background-radius:8px; */
+    -fx-text-fill: -hover-text-color;
+}
+.combo-box-base > .arrow-button > .arrow {
+	-fx-background-color: -primary-text-color;
+	/* -fx-padding: 0.166667em 0.333333em 0.166667em 0.333333em; 2 4 2 4 */
+    -fx-shape: "M 0 0 h 7 l -3.5 4 z";
+}
+.combo-box-base {
+	-fx-background-color: -primary-background-color;
+	-fx-border-color: -primary-text-color;
+	-fx-border-color: -app-color1;
+	/* -fx-border-width: 1px 1px 1px 1px; */
+}
+.combo-box-base:hover {
+	-fx-border-color: -selection-color;
+/* 	-fx-border-width: 1px 1px 1px 1px; */
+}
+.combo-box-base:focused {
+	-fx-background-color:-primary-background-color;
+	-fx-border-color: -selection-color;
+	/* -fx-border-width: 1px 1px 1px 1px; */
+}
+.choice-box {
+	-fx-border-color: -app-color1;
+	/* -fx-border-width: 1px 1px 1px 1px; */
+}
+.choice-box:focused {
+	-fx-border-color: -selection-color;
+	/* -fx-border-width: 1px 1px 1px 1px; */
+}
+.choice-box:hover {
+    -fx-border-color: -selection-color;
+    /* -fx-border-width: 1px 1px 1px 1px; */
+}
+.combo-box-base:disabled {
+    -fx-opacity: .4;
+}
+.combo-box-popup > .list-view > .placeholder > .label {
+    -fx-text-fill:-primary-text-color;
+}
+.combo-box-popup > .list-view > .placeholder > .label .text:hover{
+    -fx-fill:-secondary-text-color;
+}
+
+/* -------------------- Button ---------------------- */
+.button {
+	-fx-padding: 4 4 4 4; /* 11 15 12 15; */
+    -fx-background-insets: 0,2,2,0;
+    -fx-background-radius: 10;
+    -fx-background-color: -button-outerbackground-color, -button-innerbackground-color;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+	 -fx-text-fill: -primary-text-color;
+	 -fx-border-color: transparent;
+	 -fx-border-width: 2;
+	 -fx-border-radius: 10;
+}
+.button .text {
+	/* -fx-fill:-text-main; */
+}
+.button:hover {
+	-fx-background-color: -button-outerbackground-color, -button-hover-color;
+}
+.button:pressed {
+	-fx-padding:4 4 4 4;
+    -fx-background-insets: 0,2,2,0;
+	-fx-background-radius: 10;
+}
+.button:pressed:hover {
+	-fx-background-color: -button-outerbackground-color, -button-innerbackground-color;
+    -fx-padding: 4 4 4 4;/* 10 15 13 15; */
+    -fx-background-insets: 0 ,2 ,2 ,0;
+	-fx-background-radius: 5;
+}
+.button:focused {
+	-fx-background-color: -button-outerbackground-color, -button-innerbackground-color;
+	-fx-border-color: -primary-text-color;
+	-fx-padding: 4 4 4 4;
+}
+.button:disabled {
+    -fx-opacity: 0.2;
+}
+
+/*-------------------- SatusBar ---------------------*/
+.status-bar {
+	-fx-background-color: -app-color2;
+}
+
+/* ------------ HomePage --------------------------- */
+.homepage-shortcut-label {
+	-fx-font-size:19;
+	-fx-font-weight:bold;
+}
+
+.homepage-shortcut-label:hover {
+	-fx-underline: true;
+}
+
+.dropbox-label {
+	-fx-font-size:18;
+	-fx-font-weight:bold;
+}

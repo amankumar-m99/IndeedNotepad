@@ -1,0 +1,16 @@
+.root{
+	-app-color1: #000000;
+	-app-color2: #262626;
+	-app-color3: #4d4d4d;
+	-app-color4: #808080;
+	-app-accent-color: -app-color2;
+	-app-hover-color: -app-accent-color;
+	-app-selected-color: -app-color4;
+	-app-selected-text-color: white;
+	-app-border-color: black;
+	-app-primary-text-color: white;
+	-app-hover-text-color: white;
+	-app-highlighted-text-color: black;
+	-app-highlighted-text-background-color: white;
+	-app-notepad-background-color: -app-color3;
+}

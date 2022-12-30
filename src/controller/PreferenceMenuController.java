@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Optional;
 
+import appearance.AppearanceDialog;
 import configuration.Configuration;
 import javafx.event.Event;
 import javafx.scene.control.Alert.AlertType;
@@ -35,13 +36,19 @@ public class PreferenceMenuController implements MenuController{
 			id = "";
 		switch (id) {
 		case "launchFullScreenMenuItem": toggleLaunchFullScreen(event); break;
+		case "clearAppDataMenuItem": clearAppData(); break;
 		case "iconPackMenuItem": showIconPacks(); break;
 		case "themeMenuItem": showThemeChooser(); break;
-		case "clearAppDataMenuItem": clearAppData(); break;
+//			showAppearanceMenu();
 		default: break;
 		}
 	}
 	
+	private void showAppearanceMenu() {
+		AppearanceDialog appearanceDialog = new AppearanceDialog(mainPageController);
+		appearanceDialog.showAndWait();
+	}
+
 	private void toggleLaunchFullScreen(Event event) {
 		CheckMenuItem checkMenuItem = (CheckMenuItem)event.getTarget();
 		boolean selectedValue = checkMenuItem.selectedProperty().getValue();
@@ -54,7 +61,7 @@ public class PreferenceMenuController implements MenuController{
 	}
 
 	private void showThemeChooser(){
-		ThemeChooserDialog dialog = new ThemeChooserDialog(mainPageController.getAppMain().mainStage);
+		ThemeChooserDialog dialog = new ThemeChooserDialog(mainPageController);
 		dialog.showThemeChooserDialog();
 	}
 

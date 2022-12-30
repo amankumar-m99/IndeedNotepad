@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import configuration.AppStaticData;
 import configuration.Configuration;
+import controller.MainPageController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -18,13 +19,19 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.stage.Window;
+import main.AppMain;
 
 public class ThemeChooserDialog extends Dialog<ButtonType> {
 
 	private ToggleGroup themeToggleGroup = new ToggleGroup();
+	private Stage owner;
+	private AppMain appMain;
 
-	public ThemeChooserDialog(Window owner) {
+	public ThemeChooserDialog(MainPageController mainPageController) {
+		this.appMain = mainPageController.getAppMain(); 
+		this.owner  = appMain.mainStage;
 		initOwner(owner);
 		setTitle("Choose theme");
 		setDialogPane(getThisDialogPane());
@@ -82,6 +89,7 @@ public class ThemeChooserDialog extends Dialog<ButtonType> {
 		Optional<ButtonType> dialogResponse = showAndWait();
 		if(dialogResponse.isPresent() && dialogResponse.get().equals(ButtonType.APPLY)) {
 			Configuration.setTheme((Theme)themeToggleGroup.getSelectedToggle().getUserData());
+			appMain.setTheme();
 		}
 	}
 
