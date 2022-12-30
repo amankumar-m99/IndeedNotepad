@@ -81,7 +81,7 @@ public class MainPageController implements Initializable{
 	public MenuItem aboutMenuItem;
 	@FXML
 	public MenuItem shortcutMenuItem;
-	
+
 	private AppMain appMain;
 	private Notepad notepad;
 	private HomePage homePage;
@@ -93,7 +93,7 @@ public class MainPageController implements Initializable{
 		appMain.mainStage.setOnCloseRequest(e->closeMainstage(e));
 		AppStaticData.getIconPackProperty().addListener((observable, oldValue, newValue) -> setIconPack());
 	}
-	
+
 	private void setIconPack(){
 		Iconpack iconpack = new Iconpack(this);
 		iconpack.setUpdateIconpack();
@@ -111,19 +111,19 @@ public class MainPageController implements Initializable{
 		setIconPack();
 		root.setCenter(homePage.getHomeScreen());
 	}
-	
+
 	@FXML
 	private void fileMenuClicked(ActionEvent event) {
 		FileMenuController fileMenuController = new FileMenuController(this);
 		fileMenuController.handleEvent(event);
 	}
-	
+
 	@FXML
 	private void editMenuClicked(Event event) {
 		EditMenuController editMenuController = new EditMenuController(this);
 		editMenuController.handleEvent(event);
 	}
-	
+
 	@FXML
 	private void formatMenuClicked(Event event) {
 		FormatMenuController formatMenuController = new FormatMenuController(this);
@@ -147,32 +147,32 @@ public class MainPageController implements Initializable{
 		HelpMenuController helpMenuController = new HelpMenuController(this);
 		helpMenuController.handleEvent(event);
 	}
-	
+
 	private void closeMainstage(Event e) {
 		if(!new FileMenuController(this).canProceedNewNotepad())
 			e.consume();
 	}
-	
+
 	public AppMain getAppMain() {
 		return appMain;
 	}
-	
+
 	public void setNotepad(Notepad notepad) {
 		this.notepad = notepad;
 	}
-	
+
 	public Notepad getNotepad() {
 		return notepad;
 	}
-	
+
 	public HomePage getHomePage() {
 		return homePage;
 	}
-	
+
 	public Property<Boolean> getDisableMenuItems() {
 		return disableMenuItems;
 	}
-	
+
 	public FindReplaceDialog getFindReplaceDialog() {
 		return findReplaceDialog;
 	}
@@ -180,13 +180,13 @@ public class MainPageController implements Initializable{
 	public void setFindReplaceDialog(FindReplaceDialog findReplaceDialog) {
 		this.findReplaceDialog = findReplaceDialog;
 	}
-	
+
 	public void setFileContent(String fileContent) {
 		Notepad notepad = new Notepad(this, fileContent, true);
 		this.notepad = notepad;
 		root.setCenter(notepad);
 	}
-	
+
 	public void updateStageTitle(NotepadSavedStatus status) {
 		String aesterisk="";
 		String value="";

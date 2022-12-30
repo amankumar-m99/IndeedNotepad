@@ -14,7 +14,7 @@ public class NotepadSaver {
 	private static Window owner;	
 	private static Notepad notepad;
 	private static MainPageController mainPageController;
-	
+
 	public static boolean saveFile(MainPageController mp) {
 		initData(mp);
 		if(notepad.isFileCreated())
@@ -33,7 +33,7 @@ public class NotepadSaver {
 			return false;
 		return saveFile();
 	}
-	
+
 	private static void initData(MainPageController mp) {
 		mainPageController = mp;
 		notepad = mp.getNotepad();
@@ -47,7 +47,7 @@ public class NotepadSaver {
 	private static File showSaveDialog() {
 		return CustomFileChooser.showFileChooser(FileChooserDialogType.SAVE, owner);
 	}
-	
+
 	private static boolean saveFile() {
 		String fileContent = notepad.getText();
 		NotePadFileWriter.write(file, fileContent);

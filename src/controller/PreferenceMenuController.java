@@ -21,7 +21,7 @@ public class PreferenceMenuController implements MenuController{
 	public PreferenceMenuController(MainPageController mainPageController) {
 		this.mainPageController = mainPageController;
 	}
-	
+
 	@Override
 	public void handleEvent(Event event) {
 		String id = "";
@@ -43,7 +43,7 @@ public class PreferenceMenuController implements MenuController{
 		default: break;
 		}
 	}
-	
+
 	private void showAppearanceMenu() {
 		AppearanceDialog appearanceDialog = new AppearanceDialog(mainPageController);
 		appearanceDialog.showAndWait();
@@ -90,4 +90,5 @@ public class PreferenceMenuController implements MenuController{
 		alert = new CustomAlert(alertType, titleText, headerText, contentText, owner);
 		alert.showAndWait();
 	}
+
 }

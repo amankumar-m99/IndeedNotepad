@@ -19,14 +19,14 @@ import model.iconpack.IconPackDialog;
 import theme.ThemeChooserDialog;
 
 public class AppearanceDialog extends Dialog<ButtonType>{
-	
+
 	private MainPageController mainPageController;
 	private BorderPane mainContainer;
 	private Window owner;
 	private final String title = "Appearance Menu";
 	private final double widthSizingFactor = 0.4;
 	private final double heightSizingFactor = 0.5;
-	
+
 	public AppearanceDialog(MainPageController mainPageController) {
 		this.owner = mainPageController.getAppMain().mainStage;
 		this.mainPageController = mainPageController;

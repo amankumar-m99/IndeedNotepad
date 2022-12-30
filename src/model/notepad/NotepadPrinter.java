@@ -16,8 +16,8 @@ import controller.MainPageController;
 import javafx.print.PrinterJob;
 
 public class NotepadPrinter {
+
 	public static void print(MainPageController mainPageController) {
-		
 		/*
 		PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
 		aset.add(MediaSizeName.ISO_A4);
@@ -82,8 +82,7 @@ public class NotepadPrinter {
 //		DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE;
 		PrinterJob printerJob = PrinterJob.createPrinterJob();
 	    PrintService printService;
-	    if(printerJob.showPrintDialog(mainPageController.root.getScene().getWindow()))
-	    {
+	    if(printerJob.showPrintDialog(mainPageController.root.getScene().getWindow())){
 	        printService = PrintServiceLookup.lookupDefaultPrintService();
 	        DocFlavor docType = DocFlavor.INPUT_STREAM.AUTOSENSE;
 	        DocPrintJob printJob = printService.createPrintJob();
@@ -97,6 +96,5 @@ public class NotepadPrinter {
 				e.printStackTrace();
 			}
 	    }
-	    
 	}
 }

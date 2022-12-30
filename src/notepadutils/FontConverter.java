@@ -59,7 +59,7 @@ public class FontConverter {
 	public static String getFontSizeFromFontString(String fontString) {
 		return processFontString(fontString)[3];
 	}
-	
+
 	private static String[] processFontString(String fontString) {
 		String arr[] = fontString.split(":");
 		return arr;

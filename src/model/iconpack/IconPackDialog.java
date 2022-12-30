@@ -20,8 +20,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 
 public class IconPackDialog extends Dialog<ButtonType>{
+
 	private ToggleGroup iconPackToggleGroup = new ToggleGroup();
-	
+
 	public IconPackDialog(Window owner) {
 		initOwner(owner);
 		setTitle("Icon packs");
@@ -82,7 +83,7 @@ public class IconPackDialog extends Dialog<ButtonType>{
 		imageView.setFitHeight(50);
 		return imageView;
 	}
-	
+
 	public void showIconPackDialog() {
 		Optional<ButtonType> dialogResponse = showAndWait();
 		if(dialogResponse.isPresent() && dialogResponse.get().equals(ButtonType.APPLY)) {
@@ -90,5 +91,4 @@ public class IconPackDialog extends Dialog<ButtonType>{
 			AppStaticData.getIconPackProperty().setValue(Configuration.getIconpackType().toString());
 		}
 	}
-
 }

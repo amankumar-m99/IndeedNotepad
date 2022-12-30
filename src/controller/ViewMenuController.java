@@ -5,10 +5,8 @@ import javafx.event.Event;
 import javafx.scene.control.CheckMenuItem;
 
 public class ViewMenuController implements MenuController{
-//	private MainPageController mainPageController;
 
 	public ViewMenuController(MainPageController mainPageController) {
-//		this.mainPageController = mainPageController;
 	}
 	
 	@Override

@@ -92,5 +92,4 @@ public class ThemeChooserDialog extends Dialog<ButtonType> {
 			appMain.setTheme();
 		}
 	}
-
 }

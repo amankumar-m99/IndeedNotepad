@@ -14,11 +14,11 @@ import theme.Theme;
 
 public class AppMain extends Application{
 	public static int untitledFileCounter = 0;
-	
+
 	public Stage mainStage;
 	public Property<String> stageTitleProperty;
 	public Property<String> fileSavedIndicator;
-	
+
 	public AppMain() {
 		stageTitleProperty = new SimpleStringProperty(AppStaticData.getAppName());
 		fileSavedIndicator = new SimpleStringProperty("");
@@ -59,5 +59,4 @@ public class AppMain extends Application{
 		}
 		mainStage.getScene().getStylesheets().add("/resources/css/mainNotepadCSS.css");
 	}
-
 }

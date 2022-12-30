@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class NotePadFileWriter {
-	
+
 	public static boolean write(File file, String contentText) {
 		if(file == null)
 	    	return false;
@@ -25,5 +25,4 @@ public class NotePadFileWriter {
 		}
 		return true;
 	}
-	
 }

@@ -6,14 +6,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Iconpack {
+
 	private MainPageController mainPageController;
 
 	public Iconpack(MainPageController mainPageController) {
 		this.mainPageController = mainPageController;
 	}
-	
+
 	public void setUpdateIconpack() {
-//		IconpackType iconpackType = Configuration.getIconpackType();
 		String type = Configuration.getIconpackType().toString().toLowerCase();
 		mainPageController.getHomePage().setUpdateIcons();
 		mainPageController.newMenuItem.setGraphic(getMenuItemGraphic("/resources/images/"+type+"/menuitems/new.png"));
@@ -39,7 +39,7 @@ public class Iconpack {
 		mainPageController.clearAppDataMenuItem.setGraphic(getMenuItemGraphic("/resources/images/"+type+"/menuitems/cleardata.png"));
 		mainPageController.aboutMenuItem.setGraphic(getMenuItemGraphic("/resources/images/"+type+"/menuitems/about.png"));
 	}
-	
+
 	private ImageView getMenuItemGraphic(String path) {
 		ImageView imageView = new ImageView(new Image(path));
 		imageView.setPreserveRatio(true);

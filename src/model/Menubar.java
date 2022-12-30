@@ -6,6 +6,7 @@ import javafx.scene.input.KeyCharacterCombination;
 import javafx.scene.input.KeyCombination;
 
 public class Menubar {
+
 	public static void setAcceleratorsToMenuItems(MainPageController mainPageController) {
 		mainPageController.newMenuItem.setAccelerator(new KeyCharacterCombination("N", KeyCombination.CONTROL_DOWN));
 		mainPageController.newWindowMenuItem.setAccelerator(new KeyCharacterCombination("N", KeyCombination.CONTROL_DOWN, KeyCombination.SHIFT_DOWN));
@@ -16,7 +17,6 @@ public class Menubar {
 		mainPageController.printMenuItem.setAccelerator(new KeyCharacterCombination("P", KeyCombination.CONTROL_DOWN));
 		mainPageController.exportMenuItem.setAccelerator(new KeyCharacterCombination("E", KeyCombination.CONTROL_DOWN));
 		mainPageController.exitMenuItem.setAccelerator(new KeyCharacterCombination("X", KeyCombination.ALT_DOWN));
-		
 		mainPageController.undoMenuItem.setAccelerator(new KeyCharacterCombination("Z",KeyCombination.CONTROL_DOWN));
 		mainPageController.redoMenuItem.setAccelerator(new KeyCharacterCombination("Y",KeyCombination.CONTROL_DOWN));
 		mainPageController.cutMenuItem.setAccelerator(new KeyCharacterCombination("X",KeyCombination.CONTROL_DOWN));
@@ -24,11 +24,10 @@ public class Menubar {
 		mainPageController.pasteMenuItem.setAccelerator(new KeyCharacterCombination("V",KeyCombination.CONTROL_DOWN));
 		mainPageController.findMenuItem.setAccelerator(new KeyCharacterCombination("F",KeyCombination.CONTROL_DOWN));
 		mainPageController.replaceMenuItem.setAccelerator(new KeyCharacterCombination("R",KeyCombination.CONTROL_DOWN));
-		mainPageController.selectAllMenuItem.setAccelerator(new KeyCharacterCombination("A",KeyCombination.CONTROL_DOWN));
-		
+		mainPageController.selectAllMenuItem.setAccelerator(new KeyCharacterCombination("A",KeyCombination.CONTROL_DOWN));		
 		mainPageController.shortcutMenuItem.setAccelerator(new KeyCharacterCombination("S",KeyCombination.CONTROL_DOWN,KeyCombination.ALT_DOWN));
 	}
-	
+
 	public static void bindMenuItemsDisabledProperty(MainPageController mainPageController, Property<Boolean> disableMenuItems) {
 		mainPageController.saveMenuItem.disableProperty().bind(disableMenuItems);
 		mainPageController.saveAsMenuItem.disableProperty().bind(disableMenuItems);

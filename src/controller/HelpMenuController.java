@@ -13,7 +13,7 @@ public class HelpMenuController implements MenuController{
 	public HelpMenuController(MainPageController mainPageController) {
 		this.mainPageController = mainPageController;
 	}
-	
+
 	@Override
 	public void handleEvent(Event event) {
 		MenuItem menuItem = (MenuItem) event.getTarget();
@@ -24,7 +24,7 @@ public class HelpMenuController implements MenuController{
 		default: break;
 		}
 	}
-	
+
 	private void showAbout() {
 		About about = new About(mainPageController.getAppMain().mainStage);
 		about.show();

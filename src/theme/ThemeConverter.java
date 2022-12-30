@@ -1,7 +1,6 @@
 package theme;
 
 public class ThemeConverter {
-
 	public static Theme getThemeFromString(String themeString) {
 		Theme theme = Theme.LIGHT;
 		switch (themeString) {
@@ -10,5 +9,4 @@ public class ThemeConverter {
 		}
 		return theme;
 	}
-
 }

@@ -26,7 +26,7 @@ public class FileMenuController implements MenuController{
 		this.mainPageController = mainPageController;
 		this.notepad = mainPageController.getNotepad();
 	}
-	
+
 	@Override
 	public void handleEvent(Event event) {
 		MenuItem menuItem = (MenuItem) event.getTarget();
@@ -44,7 +44,7 @@ public class FileMenuController implements MenuController{
 		default: break;
 		}
 	}
-	
+
 	private void openNewWindow() {
 		AppMain newWindow = new AppMain();
 		try {
@@ -53,7 +53,7 @@ public class FileMenuController implements MenuController{
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void createNewNotepad() {
 		if(!canProceedNewNotepad())
 			return;
@@ -67,7 +67,7 @@ public class FileMenuController implements MenuController{
 		if(NotepadOpener.openFile(mainPageController,FileChooserDialogType.OPEN))
 			mainPageController.getDisableMenuItems().setValue(false);
 	}
-	
+
 	private void saveNotepad() {
 		if(!isNodepadexisting())
 			return;
@@ -79,11 +79,11 @@ public class FileMenuController implements MenuController{
 			return;
 		NotepadSaver.saveAsFile(mainPageController);
 	}
-	
+
 	private void printNotepad() {
 		NotepadPrinter.print(mainPageController);
 	}
-	
+
 	private void exportNotepad() {
 		ExportOptionsDialog dialog = new ExportOptionsDialog(mainPageController);
 		Optional<ButtonType> response = dialog.showAndWait();
@@ -91,7 +91,7 @@ public class FileMenuController implements MenuController{
 			return;
 		dialog.createPDF();
 	}
-	
+
 	private void closeNotepad() {
 		if(!canProceedNewNotepad())
 			return;
@@ -101,26 +101,26 @@ public class FileMenuController implements MenuController{
 		mainPageController.updateStageTitle(NotepadSavedStatus.CLOSED);
 		mainPageController.getDisableMenuItems().setValue(true);
 	}
-	
+
 	private boolean isNodepadexisting() {
 		if(notepad != null)
 			return true;
 		return false;
 	}
-	
+
 	private boolean isNotepadSaved() {
 		if(notepad.getSavedStatus().equals(NotepadSavedStatus.SAVED))
 			return true;
 		return false;
 	}
-	
+
 	public boolean canProceedNewNotepad() {
 		if(!isNodepadexisting() || isNotepadSaved())
 			return true;
 		boolean proceed = getAskSaveResponse();
 		return proceed;
 	}
-	
+
 	private boolean getAskSaveResponse() {
 		Optional<ButtonType> response = askSaveNotepad();
 		if(!response.isPresent())
@@ -146,4 +146,3 @@ public class FileMenuController implements MenuController{
 		}
 	}
 }
-

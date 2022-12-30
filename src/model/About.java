@@ -20,9 +20,8 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Window;
 
 public class About extends Dialog<ButtonType>{
-	
-	public About(Window owner)
-	{
+
+	public About(Window owner){
         initOwner(owner);
         setTitle("About");
         DialogPane dialogPane = getAboutDialogPane();

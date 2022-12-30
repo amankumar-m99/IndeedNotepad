@@ -188,5 +188,4 @@ public class StatusBar extends HBox{
 		hBox.setPadding(leftInsets);
 		return hBox;
 	}
-	
 }

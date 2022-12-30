@@ -8,7 +8,7 @@ import notepadutils.FontConverter;
 import notepadutils.NotepadSavedStatus;
 
 public class NotepadCreater {
-	
+
 	public static void createNewNotepad(MainPageController mainPageController) {
 		String fileName = "Untitled-"+String.valueOf(++AppMain.untitledFileCounter);
 		Notepad notepad = new Notepad(mainPageController);
@@ -21,7 +21,7 @@ public class NotepadCreater {
 		addStatusBar(mainPageController);
 		mainPageController.updateStageTitle(NotepadSavedStatus.SAVED);
 	}
-	
+
 	private static void addStatusBar(MainPageController mainPageController) {
 		StatusBar statusBar = new StatusBar(mainPageController);
 		if(mainPageController.statusMenuItem.isSelected()) {
@@ -39,5 +39,4 @@ public class NotepadCreater {
 		else
 			mainPageController.root.setBottom(null);
 	}
-
 }

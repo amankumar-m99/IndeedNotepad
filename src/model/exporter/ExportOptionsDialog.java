@@ -20,6 +20,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Window;
 
 public class ExportOptionsDialog extends Dialog<ButtonType> {
+
 	private String fileName;
 	private Window owner;
 	private String path;
@@ -80,5 +81,4 @@ public class ExportOptionsDialog extends Dialog<ButtonType> {
 	public void createPDF() {
 		new PDFExporter(path+File.separator+nameTextField.getText()+".pdf").createPDF();
 	}
-
 }

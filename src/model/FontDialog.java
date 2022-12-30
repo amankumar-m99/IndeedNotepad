@@ -36,6 +36,7 @@ import notepadutils.CustomAlert;
 import notepadutils.FontConverter;
 
 public class FontDialog extends Dialog<ButtonType>{
+
 	private final int MAX_FONT_SIZE = 80;
 	private Window owner;
 	private ComboBox<String> fontFamilyComboBox;
@@ -63,9 +64,8 @@ public class FontDialog extends Dialog<ButtonType>{
 		setResizable(true);
 		final Button applyButton = (Button) getDialogPane().lookupButton(ButtonType.APPLY);
 		applyButton.addEventFilter(ActionEvent.ACTION, (event) -> {
-			  if (!validateFont()) {
+			  if (!validateFont())
 			    event.consume();
-			  }
 			});
 		setOnShown(e->validateFont());
 	}
@@ -273,5 +273,4 @@ public class FontDialog extends Dialog<ButtonType>{
 	public Font getAppliedFont() {
 		return appliedFont;
 	}
-
 }

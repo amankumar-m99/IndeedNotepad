@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class NotepadFileReader {
+
 	public static String read(File file) {
 		try {
 			String fileContent = "";

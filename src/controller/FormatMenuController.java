@@ -10,12 +10,13 @@ import javafx.scene.control.MenuItem;
 import model.FontDialog;
 
 public class FormatMenuController implements MenuController {
-	
+
 	private MainPageController mainPageController;
 
 	public FormatMenuController(MainPageController mainPageController) {
 		this.mainPageController = mainPageController;
 	}
+
 	@Override
 	public void handleEvent(Event event) {
 		Object object = event.getTarget();

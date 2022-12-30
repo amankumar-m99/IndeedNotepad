@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 
 public class ClearSavedDataDialog extends Dialog<ButtonType>{
+
 	private List<String> preferenceList;
 
 	public ClearSavedDataDialog(List<String> list, Window owner) {
@@ -55,5 +56,4 @@ public class ClearSavedDataDialog extends Dialog<ButtonType>{
 		}
 		return vBox;
 	}
-
 }

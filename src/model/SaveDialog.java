@@ -11,7 +11,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Window;
 
 public class SaveDialog extends Dialog<ButtonType>{
+
 	private String fileName;
+
 	public SaveDialog(String fileName, Window owner) {
 		this.fileName = fileName;
 		setTitle("Confirm save");

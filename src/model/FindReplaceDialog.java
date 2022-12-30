@@ -22,14 +22,16 @@ import javafx.stage.Modality;
 import javafx.stage.Window;
 
 public class FindReplaceDialog extends Dialog<ButtonType>{
+
 	public static enum FindReplaceType{
 		FIND, REPLACE;
 	}
+
 	private TabPane tabPane;
 	private TextField findTextField;
 	private TextField findReplaceTextField;
 	private TextField replaceTextField;
-	
+
 	public FindReplaceDialog(Window owner) {
 		findTextField = new TextField();
 		findTextField.setPrefWidth(400);
@@ -42,7 +44,7 @@ public class FindReplaceDialog extends Dialog<ButtonType>{
 		setTitle("Find/Replace");
 		setDialogPane(getFindReplaceDialogPane());
 	}
-	
+
 	private DialogPane getFindReplaceDialogPane() {
 		DialogPane dialogPane = new DialogPane();
 		dialogPane.getButtonTypes().add(ButtonType.CLOSE);
@@ -71,7 +73,7 @@ public class FindReplaceDialog extends Dialog<ButtonType>{
 		tab.setContent(getGenerateTabContent(FindReplaceType.REPLACE));
 		return tab;
 	}
-	
+
 	private Node getGenerateTabContent(FindReplaceType type) {
 		VBox vbox = new VBox(10);
 		vbox.setPadding(new Insets(20,5,10,5));
@@ -79,7 +81,7 @@ public class FindReplaceDialog extends Dialog<ButtonType>{
 		vbox.getChildren().addAll(gridPane,scopePane(),optionsPane(),directionPane(),buttonPallete(type));
 		return vbox;
 	}
-	
+
 	private GridPane getGenerateMainGrid(FindReplaceType type) {
 		ColumnConstraints col1 = new ColumnConstraints(70,70,70);
 		GridPane gridPane;
@@ -92,7 +94,7 @@ public class FindReplaceDialog extends Dialog<ButtonType>{
 		gridPane.getColumnConstraints().add(col1);
 		return gridPane;
 	}
-	
+
 	private GridPane getFindGrid() {
 		GridPane gridPane = new GridPane();
 		gridPane.addRow(0, new Label("Find :"),findTextField);
@@ -108,7 +110,7 @@ public class FindReplaceDialog extends Dialog<ButtonType>{
 		gridPane.addRow(1, new Label("Replace :"),replaceTextField);
 		return gridPane;
 	}
-	
+
 	private Node scopePane() {
 		ToggleGroup scopeToggleGroup = new ToggleGroup();
 		RadioButton allRadioBtn = new RadioButton("All");
@@ -119,7 +121,7 @@ public class FindReplaceDialog extends Dialog<ButtonType>{
 		VBox vbox = new VBox(4,new Label("Scope :"),allRadioBtn,selectedLinesRadioBtn);
 		return vbox;
 	}
-	
+
 	private Node optionsPane() {
 		ToggleGroup wordToggleGroup = new ToggleGroup();
 		RadioButton wordRadioBtn = new RadioButton("Whole Word");
@@ -130,7 +132,7 @@ public class FindReplaceDialog extends Dialog<ButtonType>{
 		VBox vbox = new VBox(2,new Label("Options :"),new CheckBox("Case sensitive"),wordRadioBtn,regexRadioBtn);
 		return vbox;
 	}
-	
+
 	private Node directionPane() {
 		ToggleGroup directionToggleGroup = new ToggleGroup();
 		RadioButton forwardRadioBtn = new RadioButton("Forward");
@@ -141,7 +143,7 @@ public class FindReplaceDialog extends Dialog<ButtonType>{
 		VBox vbox = new VBox(4,new Label("Direction :"),forwardRadioBtn,backwardRadioBtn);
 		return vbox;
 	}
-	
+
 	private Node buttonPallete(FindReplaceType type) {
 		HBox expane = new HBox();
 		HBox.setHgrow(expane, Priority.ALWAYS);
@@ -152,12 +154,12 @@ public class FindReplaceDialog extends Dialog<ButtonType>{
 		}
 		return new HBox(expane,hbox);
 	}
-	
+
 	public void setFindText(String findText) {
 		findTextField.setText(findText);
 		findReplaceTextField.setText(findText);
 	}
-	
+
 	public void show(FindReplaceType type) {
 		if(type.equals(FindReplaceType.FIND))
 			tabPane.getSelectionModel().select(0);

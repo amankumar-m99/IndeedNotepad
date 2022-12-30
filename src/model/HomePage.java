@@ -33,11 +33,12 @@ import model.notepad.NotepadOpener;
 import notepadutils.Key;
 
 public class HomePage {
+
 	private Label applogo;
 	private Label dragndropImg;
 	private MainPageController mainPageController;
 	private StackPane homeScreen;
-	
+
 	public HomePage(MainPageController mainPageController) {
 		this.mainPageController = mainPageController;
 		applogo = new Label();
@@ -67,7 +68,7 @@ public class HomePage {
 		StackPane sp = new StackPane(vbox);
 		this.homeScreen = sp;
 	}
-	
+
 	private Node getGridPane() {
 		ColumnConstraints col1 = new ColumnConstraints();
 		col1.setHalignment(HPos.RIGHT);
@@ -96,7 +97,7 @@ public class HomePage {
 		label.getStyleClass().add("homepage-shortcut-label");
 		return label;
 	}
-	
+
 	private HBox getShortCutHBox(Key... keys) {
 		String plusTextStyle = "-fx-font-weight:bold;-fx-font-size:17;";
 		Insets insets = new Insets(5,10,5,10);
@@ -180,7 +181,7 @@ public class HomePage {
 		return keyLabel;
 	}
 	*/
-	
+
 	private Node getDropBox() {
 		Border componentBorder = new Border(new BorderStroke(Color.DARKGRAY, BorderStrokeStyle.DASHED, new CornerRadii(10, 10, 10, 10,false), new BorderWidths(5)));
 		Label label = new Label("Drop the file here to open");
@@ -193,7 +194,6 @@ public class HomePage {
 		dropBox.setMaxSize(500, 220);
 		dropBox.setPadding(new Insets(20,20,20,20));
 		dropBox.setOnDragOver(e->{
-			
 		});
 		dropBox.setOnDragOver(e->dragOverAction(e,dropBox));
 		dropBox.setOnDragDropped(e->dragDroppedAction(e));
@@ -219,7 +219,7 @@ public class HomePage {
         event.setDropCompleted(success);
         event.consume();
 	}
-	
+
 	public StackPane getHomeScreen() {
 		return homeScreen;
 	}

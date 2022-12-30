@@ -21,12 +21,14 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-
 public class Shortcuts extends Dialog<ButtonType>{
+
 	private static enum ShortcutTab{
 		FILE, EDIT, FORMAT, VIEW, PREFERENCE, HElP;
 	}
+
 	private Border componentBorder = new Border(new BorderStroke(Color.DARKGRAY, BorderStrokeStyle.SOLID, new CornerRadii(10, 10, 10, 10,false), new BorderWidths(2)));
+
 	public Shortcuts() {
 		setTitle("Shortcuts");
 		setDialogPane(getShortcutsDialogPane());

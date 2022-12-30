@@ -14,7 +14,7 @@ public class EditMenuController implements MenuController {
 		this.mainPageController = mainPageController;
 		this.notepad = mainPageController.getNotepad();
 	}
-	
+
 	@Override
 	public void handleEvent(Event event) {
 		MenuItem menuItem = (MenuItem) event.getTarget();
@@ -33,38 +33,25 @@ public class EditMenuController implements MenuController {
 		default: break;
 		}
 	}
-	
+
 	private void undo() {
 		notepad.undo();
 	}
-	
+
 	private void redo() {
 		notepad.redo();
 	}
-	
+
 	private void cut() {
 		notepad.cut();
 	}
-	
+
 	private void copy() {
 		notepad.copy();
-		/*
-		Clipboard clipboard = Clipboard.getSystemClipboard();
-		ClipboardContent clipboardContent = new ClipboardContent();
-		clipboardContent.putString(notepad.getSelectedText());
-		clipboard.setContent(clipboardContent);
-		*/
 	}
-	
+
 	private void paste() {
 		notepad.paste();
-		/*
-		String text = Clipboard.getSystemClipboard().getString();
-		if(text == null)
-			return;
-		int caretPosition = notepad.getCaretPosition();
-		notepad.insertText(caretPosition, text);
-		*/
 	}
 
 	private void delete() {
@@ -80,7 +67,7 @@ public class EditMenuController implements MenuController {
 	private void replace() {
 		setFindReplaceDialog(FindReplaceType.REPLACE);
 	}
-	
+
 	private void setFindReplaceDialog(FindReplaceType type) {
 		if(mainPageController.getFindReplaceDialog() == null) {
 			mainPageController.setFindReplaceDialog(new FindReplaceDialog(mainPageController.getAppMain().mainStage));
@@ -94,7 +81,7 @@ public class EditMenuController implements MenuController {
 	private void selectAll() {
 		notepad.selectAll();
 	}
-	
+
 	private void deleteAll() {
 		notepad.clear();
 	}

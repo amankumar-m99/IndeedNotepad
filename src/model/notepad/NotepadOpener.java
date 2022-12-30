@@ -11,6 +11,7 @@ import notepadutils.NotepadFileReader;
 import notepadutils.NotepadSavedStatus;
 
 public class NotepadOpener {
+
 	private static File file;
 	private static FileChooserDialogType type;
 	private static Window owner;
@@ -57,5 +58,4 @@ public class NotepadOpener {
 			lineBreak = "\n";
 		return lineBreak;
 	}
-
 }

@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import notepadutils.Key;
 
 public class ShortcutActionKey {
+
 	public static HBox actionKeys(Key... keys) {
 		HBox hbox = new HBox(5);
 		for(int i=0; i<keys.length; i++) {

@@ -12,7 +12,7 @@ import theme.ThemeConverter;
 
 public class Configuration {
 	public static Preferences preferences = Preferences.userNodeForPackage(Configuration.class);
-	
+
 	private static IconpackType DEFAULT_ICONPACK = IconpackType.COLOR;
 	private static Theme DEFAULT_THEME = Theme.LIGHT;
 	private static boolean DEFAULT_WORD_WRAP = false;
