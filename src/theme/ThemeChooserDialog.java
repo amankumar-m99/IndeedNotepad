@@ -31,7 +31,7 @@ public class ThemeChooserDialog extends Dialog<ButtonType> {
 
 	public ThemeChooserDialog(MainPageController mainPageController) {
 		this.appMain = mainPageController.getAppMain(); 
-		this.owner  = appMain.mainStage;
+		this.owner  = appMain.getMainStage();
 		initOwner(owner);
 		setTitle("Choose theme");
 		setDialogPane(getThisDialogPane());

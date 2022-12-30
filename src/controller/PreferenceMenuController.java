@@ -56,7 +56,7 @@ public class PreferenceMenuController implements MenuController{
 	}
 
 	private void showIconPacks() {
-		IconPackDialog dialog = new IconPackDialog(mainPageController.getAppMain().mainStage);
+		IconPackDialog dialog = new IconPackDialog(mainPageController.getAppMain().getMainStage());
 		dialog.showIconPackDialog();
 	}
 
@@ -70,7 +70,7 @@ public class PreferenceMenuController implements MenuController{
 		String titleText = "Clear Preferences";
 		String headerText = "Clear all the preferences ?";
 		String contentText = "This action will reset the default preferences.";
-		Window owner = mainPageController.getAppMain().mainStage;
+		Window owner = mainPageController.getAppMain().getMainStage();
 		CustomAlert alert = new CustomAlert(alertType, titleText, headerText, contentText, owner);
 		Optional<ButtonType> result = alert.showAndWait();
 		if(!result.isPresent() || result.get().equals(ButtonType.CANCEL))

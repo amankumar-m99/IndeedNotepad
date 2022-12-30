@@ -39,7 +39,7 @@ public class FormatMenuController implements MenuController {
 	}
 
 	private void handleFonts() {
-		FontDialog fontDialog = new FontDialog(mainPageController.getAppMain().mainStage);
+		FontDialog fontDialog = new FontDialog(mainPageController.getAppMain().getMainStage());
 		Optional<ButtonType> result = fontDialog.showAndWait();
 		if(!result.isPresent() || result.get().equals(ButtonType.CANCEL))
 			return;

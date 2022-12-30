@@ -63,7 +63,7 @@ public class NotepadEditor {
 	private static void setFindReplaceDialog(FindReplaceType type) {
 		FindReplaceDialog findReplaceDialog = mainPageController.getFindReplaceDialog();
 		if(findReplaceDialog == null)
-			findReplaceDialog = new FindReplaceDialog(mainPageController.getAppMain().mainStage);
+			findReplaceDialog = new FindReplaceDialog(mainPageController.getAppMain().getMainStage());
 		if(notepad.getSelectedText() != null)
 			findReplaceDialog.setFindText(notepad.getSelectedText());
 		findReplaceDialog.show(type);

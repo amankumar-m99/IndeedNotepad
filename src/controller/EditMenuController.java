@@ -70,7 +70,7 @@ public class EditMenuController implements MenuController {
 
 	private void setFindReplaceDialog(FindReplaceType type) {
 		if(mainPageController.getFindReplaceDialog() == null) {
-			mainPageController.setFindReplaceDialog(new FindReplaceDialog(mainPageController.getAppMain().mainStage));
+			mainPageController.setFindReplaceDialog(new FindReplaceDialog(mainPageController.getAppMain().getMainStage()));
 		}
 		FindReplaceDialog findReplaceDialog = mainPageController.getFindReplaceDialog();
 		if(notepad.getSelectedText() != null)

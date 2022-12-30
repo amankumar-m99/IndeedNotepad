@@ -213,7 +213,7 @@ public class HomePage {
         if (db.hasFiles()) {
         	success = true;
         	File file1 = new File(db.getFiles().get(0).getAbsolutePath());
-        	mainPageController.getAppMain().mainStage.setMaximized(true);
+        	mainPageController.getAppMain().getMainStage().setMaximized(true);
         	NotepadOpener.openFile(mainPageController, file1);
         }
         event.setDropCompleted(success);

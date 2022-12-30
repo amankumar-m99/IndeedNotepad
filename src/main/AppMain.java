@@ -13,9 +13,11 @@ import javafx.stage.Stage;
 import theme.Theme;
 
 public class AppMain extends Application{
+
 	public static int untitledFileCounter = 0;
 
-	public Stage mainStage;
+	private Stage mainStage;
+
 	public Property<String> stageTitleProperty;
 	public Property<String> fileSavedIndicator;
 
@@ -58,5 +60,9 @@ public class AppMain extends Application{
 			break;
 		}
 		mainStage.getScene().getStylesheets().add("/resources/css/mainNotepadCSS.css");
+	}
+
+	public Stage getMainStage() {
+		return mainStage;
 	}
 }

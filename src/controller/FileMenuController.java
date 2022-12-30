@@ -136,13 +136,13 @@ public class FileMenuController implements MenuController{
 	}
 
 	private Optional<ButtonType> askSaveNotepad() {
-		SaveDialog saveDialog = new SaveDialog(notepad.getFileName(), mainPageController.getAppMain().mainStage);
+		SaveDialog saveDialog = new SaveDialog(notepad.getFileName(), mainPageController.getAppMain().getMainStage());
 		return saveDialog.showAndWait();
 	}
 
 	private void exit() {
 		if(canProceedNewNotepad()) {
-			mainPageController.getAppMain().mainStage.close();
+			mainPageController.getAppMain().getMainStage().close();
 		}
 	}
 }

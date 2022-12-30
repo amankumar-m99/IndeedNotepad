@@ -26,13 +26,13 @@ public class HelpMenuController implements MenuController{
 	}
 
 	private void showAbout() {
-		About about = new About(mainPageController.getAppMain().mainStage);
+		About about = new About(mainPageController.getAppMain().getMainStage());
 		about.show();
 	}
 
 	private void showShortCuts() {
 		Dialog<ButtonType> dialog = new Shortcuts();
-		dialog.initOwner(mainPageController.getAppMain().mainStage);
+		dialog.initOwner(mainPageController.getAppMain().getMainStage());
 		dialog.showAndWait();
 	}
 

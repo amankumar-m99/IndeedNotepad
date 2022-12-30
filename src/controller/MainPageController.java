@@ -90,7 +90,7 @@ public class MainPageController implements Initializable{
 
 	public MainPageController(AppMain appMain) {
 		this.appMain = appMain;
-		appMain.mainStage.setOnCloseRequest(e->closeMainstage(e));
+		appMain.getMainStage().setOnCloseRequest(e->closeMainstage(e));
 		AppStaticData.getIconPackProperty().addListener((observable, oldValue, newValue) -> setIconPack());
 	}
 

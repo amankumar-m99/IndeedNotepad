@@ -28,7 +28,7 @@ public class AppearanceDialog extends Dialog<ButtonType>{
 	private final double heightSizingFactor = 0.5;
 
 	public AppearanceDialog(MainPageController mainPageController) {
-		this.owner = mainPageController.getAppMain().mainStage;
+		this.owner = mainPageController.getAppMain().getMainStage();
 		this.mainPageController = mainPageController;
 		setTitle(title);
 		initOwner(owner);

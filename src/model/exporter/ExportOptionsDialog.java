@@ -28,7 +28,7 @@ public class ExportOptionsDialog extends Dialog<ButtonType> {
 
 	public ExportOptionsDialog(MainPageController mainPageController) {
 		this.fileName = mainPageController.getNotepad().getFileName();
-		this.owner = mainPageController.getAppMain().mainStage;
+		this.owner = mainPageController.getAppMain().getMainStage();
 		initOwner(owner);
 		setTitle("Export document");
 		setDialogPane(getThisDialogPane());
