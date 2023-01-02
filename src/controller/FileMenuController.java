@@ -2,12 +2,11 @@ package controller;
 
 import java.util.Optional;
 
-import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
-import main.AppMain;
+import main.IndeedNotepadAppMain;
 import model.SaveDialog;
 import model.exporter.ExportOptionsDialog;
 import model.notepad.Notepad;
@@ -46,7 +45,7 @@ public class FileMenuController implements MenuController{
 	}
 
 	private void openNewWindow() {
-		AppMain newWindow = new AppMain();
+		IndeedNotepadAppMain newWindow = new IndeedNotepadAppMain();
 		try {
 			newWindow.start(new Stage());
 		} catch (Exception e) {

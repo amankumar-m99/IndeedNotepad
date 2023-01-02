@@ -20,14 +20,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import main.AppMain;
+import main.IndeedNotepadAppMain;
 
 public class ThemeChooserDialog extends Dialog<ButtonType> {
 
 	private ToggleGroup themeToggleGroup = new ToggleGroup();
 	private Stage owner;
-	private AppMain appMain;
+	private IndeedNotepadAppMain appMain;
 
 	public ThemeChooserDialog(MainPageController mainPageController) {
 		this.appMain = mainPageController.getAppMain(); 

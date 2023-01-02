@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
-import main.AppMain;
+import main.IndeedNotepadAppMain;
 import model.FindReplaceDialog;
 import model.HomePage;
 import model.Menubar;
@@ -82,13 +82,13 @@ public class MainPageController implements Initializable{
 	@FXML
 	public MenuItem shortcutMenuItem;
 
-	private AppMain appMain;
+	private IndeedNotepadAppMain appMain;
 	private Notepad notepad;
 	private HomePage homePage;
 	private Property<Boolean> disableMenuItems;
 	private FindReplaceDialog findReplaceDialog;
 
-	public MainPageController(AppMain appMain) {
+	public MainPageController(IndeedNotepadAppMain appMain) {
 		this.appMain = appMain;
 		appMain.getMainStage().setOnCloseRequest(e->closeMainstage(e));
 		AppStaticData.getIconPackProperty().addListener((observable, oldValue, newValue) -> setIconPack());
@@ -153,7 +153,7 @@ public class MainPageController implements Initializable{
 			e.consume();
 	}
 
-	public AppMain getAppMain() {
+	public IndeedNotepadAppMain getAppMain() {
 		return appMain;
 	}
 

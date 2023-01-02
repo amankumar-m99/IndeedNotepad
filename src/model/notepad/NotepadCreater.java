@@ -2,7 +2,7 @@ package model.notepad;
 
 import configuration.Configuration;
 import controller.MainPageController;
-import main.AppMain;
+import main.IndeedNotepadAppMain;
 import model.StatusBar;
 import notepadutils.FontConverter;
 import notepadutils.NotepadSavedStatus;
@@ -10,7 +10,7 @@ import notepadutils.NotepadSavedStatus;
 public class NotepadCreater {
 
 	public static void createNewNotepad(MainPageController mainPageController) {
-		String fileName = "Untitled-"+String.valueOf(++AppMain.untitledFileCounter);
+		String fileName = "Untitled-"+String.valueOf(++IndeedNotepadAppMain.untitledFileCounter);
 		Notepad notepad = new Notepad(mainPageController);
 		notepad.setFileName(fileName);
 		notepad.getProperties().put("line.separator", System.getProperty("line.separator"));

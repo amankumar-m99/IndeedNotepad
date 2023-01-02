@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
 
 public class AppStaticData {
 	private static final Image APPICON = new Image("/resources/images/appicon.png");
-	private static final String appName= "Indeed NotePad";
+	private static final String appName= "Indeed Notepad";
 	private static final String mainViewFXMLPath = "/resources/view/mainView.fxml";
 	private static Border componentBorder = new Border(new BorderStroke(Color.DARKGRAY, BorderStrokeStyle.SOLID, new CornerRadii(10, 10, 10, 10,false), new BorderWidths(2)));
 	private static Property<String> iconPackProperty = new SimpleStringProperty(Configuration.getIconpackType().toString());

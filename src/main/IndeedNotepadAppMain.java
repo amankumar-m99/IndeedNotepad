@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import theme.Theme;
 
-public class AppMain extends Application{
+public class IndeedNotepadAppMain extends Application{
 
 	public static int untitledFileCounter = 0;
 
@@ -21,7 +21,7 @@ public class AppMain extends Application{
 	public Property<String> stageTitleProperty;
 	public Property<String> fileSavedIndicator;
 
-	public AppMain() {
+	public IndeedNotepadAppMain() {
 		stageTitleProperty = new SimpleStringProperty(AppStaticData.getAppName());
 		fileSavedIndicator = new SimpleStringProperty("");
 	}
